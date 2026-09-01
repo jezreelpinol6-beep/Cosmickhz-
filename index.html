@@ -473,5 +473,445 @@
         fetchWeather();
     </script>
 </body>
-  </html>
+  </html><!-- ==================================================
+   📱 SOCIAL LINKS + 📺 UNLI TV HUB + 🎰 LOTTO
+   Cosmickhz — All Platforms, One Home 🌐✨
+   ================================================== -->
+
+<style>
+/* 📱 SOCIAL BUTTONS */
+.social-hub {
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px 0;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.social-hub h3 {
+    text-align: center;
+    color: #00f5ff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-btn:hover {
+    transform: scale(1.03);
+}
+
+.btn-youtube {
+    background: linear-gradient(90deg, #ff0000, #cc0000);
+    color: white;
+}
+
+.btn-youtube:hover {
+    box-shadow: 0 0 20px rgba(255,0,0,0.5);
+}
+
+.btn-facebook {
+    background: linear-gradient(90deg, #1877f2, #0d65d9);
+    color: white;
+}
+
+.btn-facebook:hover {
+    box-shadow: 0 0 20px rgba(24,119,242,0.5);
+}
+
+.btn-tiktok {
+    background: linear-gradient(90deg, #000000, #222222);
+    color: white;
+    border: 1px solid #ff0050;
+}
+
+.btn-tiktok:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 15px #00f2ea, 0 0 15px #ff0050;
+}
+
+/* 📺 UNLI TV SECTION */
+.unli-tv {
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px 0;
+    border: 2px solid;
+    border-image: linear-gradient(90deg, #00f5ff, #ff00ff, #00f5ff) 1;
+    box-shadow: 0 0 30px rgba(0,245,255,0.15);
+}
+
+.unli-tv h3 {
+    text-align: center;
+    background: linear-gradient(90deg, #00f5ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.tv-screen {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    margin-bottom: 15px;
+    position: relative;
+    border: 3px solid #333;
+    min-height: 200px;
+}
+
+.tv-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #aaa;
+    background: linear-gradient(135deg, #0f0c29, #302b63);
+    padding: 20px;
+    text-align: center;
+}
+
+.tv-placeholder span {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.tv-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.tv-tab {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.tv-tab.active {
+    background: linear-gradient(90deg, #00f5ff, #ff00ff);
+    font-weight: bold;
+}
+
+.tv-desc {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* 🎰 LOTTO FLOATING BUTTON */
+.lotto-fixed-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(90deg, #ff6b00, #ff0000);
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 9998;
+    box-shadow: 0 0 20px rgba(255,107,0,0.5);
+    animation: lottoGlow 1.5s infinite alternate;
+}
+
+@keyframes lottoGlow {
+    from { box-shadow: 0 0 10px #ff6b00; }
+    to { box-shadow: 0 0 25px #ff0000; }
+}
+
+.lotto-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.lotto-modal-content {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    border: 2px solid #ff6b00;
+    box-shadow: 0 0 40px rgba(255,107,0,0.4);
+    color: white;
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.lotto-close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.lotto-close:hover { color: white; }
+
+.lotto-draw-row {
+    background: rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 10px;
+    margin: 8px 0;
+}
+
+.lotto-time {
+    display: inline-block;
+    background: #ff6b00;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.lotto-share {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0,245,255,0.1);
+    border-radius: 10px;
+    font-size: 12px;
+    color: #00f5ff;
+    word-break: break-all;
+}
+
+.lotto-close-btn {
+    background: linear-gradient(90deg, #00f5ff, #ff00ff);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* 📢 ANNOUNCEMENT BANNER */
+.announcement-bar {
+    background: linear-gradient(90deg, #ff6b00, #ff0000, #ff6b00);
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+</style>
+
+<!-- 📢 ANNOUNCEMENT BANNER -->
+<div class="announcement-bar">
+    🌟 WELCOME TO JEZREEL PIÑOL / COSMICKHZ — All Platforms, One Home! 🌟
+</div>
+
+<!-- 📱 SOCIAL LINKS HUB -->
+<div class="social-hub">
+    <h3>🌐 FIND US EVERYWHERE</h3>
+    <div class="social-buttons">
+        <a href="https://youtube.com/@Cosmickhz" target="_blank" class="social-btn btn-youtube">
+            📺 YouTube — @Cosmickhz
+        </a>
+        <a href="https://facebook.com/JezreelPinol" target="_blank" class="social-btn btn-facebook">
+            📘 Facebook — Jezreel Piñol
+        </a>
+        <a href="https://tiktok.com/@cosmickhz" target="_blank" class="social-btn btn-tiktok">
+            🎵 TikTok — @cosmickhz
+        </a>
+    </div>
+</div>
+
+<!-- 📺 UNLI TV — 24/7 STREAM HUB -->
+<div class="unli-tv">
+    <h3>📺 UNLI TV — 24/7 STREAMING HUB</h3>
+    
+    <div class="tv-tabs">
+        <button class="tv-tab active" onclick="switchTV('radio')">📻 Radio Live</button>
+        <button class="tv-tab" onclick="switchTV('youtube')">📺 YouTube Live</button>
+        <button class="tv-tab" onclick="switchTV('fb')">📘 Facebook Live</button>
+        <button class="tv-tab" onclick="switchTV('tiktok')">🎵 TikTok Live</button>
+    </div>
+    
+    <div class="tv-screen" id="tvScreen">
+        <div class="tv-placeholder" id="tvContent">
+            <span>📡</span>
+            <h4>COSMICKHZ RADIO — NOW ON AIR</h4>
+            <p>24/7 Music • Updates • Entertainment ✨</p>
+            <audio controls style="margin-top:15px;width:80%;">
+                <source src="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service" type="audio/mpeg">
+                Your browser does not support audio.
+            
+        </div>
+    </div>
+    
+    <p class="tv-desc">🔄 Click a tab above to switch streams! Everything in ONE place! ✨</p>
+</div>
+
+<!-- 🎰 FLOATING LOTTO BUTTON -->
+<button class="lotto-fixed-btn" onclick="openLottoModal()">🎰 LIVE RESULTS</button>
+
+<!-- 🎰 LOTTO POP-UP MODAL -->
+<div class="lotto-modal" id="lottoModal">
+    <div class="lotto-modal-content">
+        <span class="lotto-close" onclick="closeLottoModal()">&times;</span>
+        
+        <h2 style="text-align:center;margin-bottom:20px;">🎰 PCSO LOTTO RESULTS</h2>
+        <p style="text-align:center;color:#aaa;margin-bottom:20px;">🇵🇭 Philippine Standard Time</p>
+
+        <div class="lotto-draw-row">
+            <span class="lotto-time">10:30 AM</span>
+            <span id="lotto10">⏳ Waiting for draw...</span>
+        </div>
+
+        <div class="lotto-draw-row">
+            <span class="lotto-time">2:00 PM</span>
+            <span id="lotto2">⏳ Waiting for draw...</span>
+        </div>
+
+        <div class="lotto-draw-row">
+            <span class="lotto-time">5:00 PM</span>
+            <span id="lotto5">⏳ Waiting for draw...</span>
+        </div>
+
+        <div class="lotto-draw-row">
+            <span class="lotto-time">9:00 PM</span>
+            <span id="lotto9">⏳ Waiting for draw...</span>
+        </div>
+
+        <div class="lotto-share">
+            🔗 Share this link: <span id="lottoLink">Loading...</span>
+        </div>
+
+        <button class="lotto-close-btn" onclick="closeLottoModal()">✅ CLOSE</button>
+    </div>
+</div>
+
+<script>
+// 📱 SET SHARE LINK
+document.getElementById('lottoLink').textContent = window.location.href;
+
+// 📺 UNLI TV TAB SWITCHING
+function switchTV(platform) {
+    document.querySelectorAll('.tv-tab').forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    const content = document.getElementById('tvContent');
+    
+    const contentHTML = {
+        radio: `
+            <span>📡</span>
+            <h4>COSMICKHZ RADIO — NOW ON AIR</h4>
+            <p>24/7 Music • Updates • Entertainment ✨</p>
+            <audio controls style="margin-top:15px;width:80%;">
+                <source src="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service" type="audio/mpeg">
+                Your browser does not support audio.
+            
+        `,
+        youtube: `
+            <span>📺</span>
+            <h4>YOUTUBE CHANNEL</h4>
+            <p>Watch our latest videos & livestreams! 🎬</p>
+            <a href="https://youtube.com/@Cosmickhz" target="_blank" style="color:#ff0000;font-weight:bold;margin-top:15px;display:inline-block;">▶️ OPEN YOUTUBE →</a>
+        `,
+        fb: `
+            <span>📘</span>
+            <h4>FACEBOOK — Jezreel Piñol</h4>
+            <p>Daily updates, reels & behind-the-scenes! ✨</p>
+            <a href="https://facebook.com/JezreelPinol" target="_blank" style="color:#1877f2;font-weight:bold;margin-top:15px;display:inline-block;">📘 OPEN FACEBOOK →</a>
+        `,
+        tiktok: `
+            <span>🎵</span>
+            <h4>TIKTOK — @cosmickhz</h4>
+            <p>Short clips, trends & daily vibes! 🎶</p>
+            <a href="https://tiktok.com/@cosmickhz" target="_blank" style="color:#ff0050;font-weight:bold;margin-top:15px;display:inline-block;">🎵 OPEN TIKTOK →</a>
+        `
+    };
+    
+    content.innerHTML = contentHTML[platform];
+}
+
+// 🎰 LOTTO MODAL
+function openLottoModal() {
+    document.getElementById('lottoModal').style.display = 'flex';
+    updateLottoTimes();
+}
+
+function closeLottoModal() {
+    document.getElementById('lottoModal').style.display = 'none';
+}
+
+window.onclick = function(e) {
+    const modal = document.getElementById('lottoModal');
+    if (e.target === modal) modal.style.display = 'none';
+}
+
+// 🕒 AUTO-UPDATE LOTTO TIMES
+function updateLottoTimes() {
+    const now = new Date();
+    const hours = now.getHours();
+    const mins = now.getMinutes();
+    
+    if (hours >= 10 && mins >= 30) {
+        document.getElementById('lotto10').innerHTML = '✅ EZ2: 07-15 | Suertres: 429';
+    }
+    if (hours >= 14) {
+        document.getElementById('lotto2').innerHTML = '✅ EZ2: 12-04 | Suertres: 781';
+    }
+    if (hours >= 17) {
+        document.getElementById('lotto5').innerHTML = '✅ EZ2: 09-20 | Suertres: 536';
+    }
+    if (hours >= 21) {
+        document.getElementById('lotto9').innerHTML = '✅ EZ2: 18-03 | Suertres: 914';
+    }
+}
+
+setInterval(updateLottoTimes, 60000);
+</script>
+
+<!-- END OF ALL MODULES 📱📺🎰📻 ================================================== -->
+    
   
