@@ -224,6 +224,353 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* 📱 SOCIAL BUTTONS */
+        .social-hub {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .social-hub h3 {
+            text-align: center;
+            color: #00f5ff;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.03);
+        }
+
+        .btn-youtube {
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            color: white;
+        }
+
+        .btn-youtube:hover {
+            box-shadow: 0 0 20px rgba(255,0,0,0.5);
+        }
+
+        .btn-facebook {
+            background: linear-gradient(90deg, #1877f2, #0d65d9);
+            color: white;
+        }
+
+        .btn-facebook:hover {
+            box-shadow: 0 0 20px rgba(24,119,242,0.5);
+        }
+
+        .btn-tiktok {
+            background: linear-gradient(90deg, #000000, #222222);
+            color: white;
+            border: 1px solid #ff0050;
+        }
+
+        .btn-tiktok:hover {
+            box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 15px #00f2ea, 0 0 15px #ff0050;
+        }
+
+        /* 📺 UNLI TV SECTION */
+        .unli-tv {
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #00f5ff, #ff00ff, #00f5ff) 1;
+            box-shadow: 0 0 30px rgba(0,245,255,0.15);
+        }
+
+        .unli-tv h3 {
+            text-align: center;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .tv-screen {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            margin-bottom: 15px;
+            position: relative;
+            border: 3px solid #333;
+            min-height: 200px;
+        }
+
+        .tv-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #888;
+            text-align: center;
+        }
+
+        .tv-placeholder span {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* 🎰 LOTTO FLOATING BUTTON */
+        .lotto-fixed-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #ff6b00, #ff0000);
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 9998;
+            box-shadow: 0 0 20px rgba(255,107,0,0.5);
+            animation: lottoGlow 1.5s infinite alternate;
+        }
+
+        @keyframes lottoGlow {
+            from { box-shadow: 0 0 10px #ff6b00; }
+            to { box-shadow: 0 0 25px #ff0000; }
+        }
+
+        .lotto-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .lotto-modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 450px;
+            width: 95%;
+            border: 2px solid #ff6b00;
+            box-shadow: 0 0 40px rgba(255,107,0,0.4);
+            color: white;
+            animation: popIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lotto-close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .lotto-close:hover { color: white; }
+
+        /* 📑 TABS */
+        .lotto-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .lotto-tab {
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .lotto-tab.active {
+            background: linear-gradient(90deg, #ff6b00, #ff0000);
+            font-weight: bold;
+        }
+
+        /* 🎯 DRAW CARD */
+        .draw-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #ff6b00;
+        }
+
+        .draw-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .draw-time-badge {
+            background: #ff6b00;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .draw-duration {
+            font-size: 11px;
+            color: #888;
+            background: rgba(255,255,255,0.05);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .draw-status {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .status-waiting { background: #333; color: #aaa; }
+        .status-live { background: #00c853; color: white; animation: pulse 1s infinite; }
+        .status-done { background: #1565c0; color: white; }
+
+        @keyframes pulse {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .draw-numbers {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            color: #00f5ff;
+            font-family: monospace;
+        }
+
+        .jackpot-prize {
+            font-size: 13px;
+            color: #ffd700;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .voice-btn {
+            background: linear-gradient(90deg, #00c853, #00e676);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.2s;
+        }
+
+        .voice-btn:hover { transform: scale(1.05); }
+        .voice-btn.speaking {
+            animation: speaking 0.5s infinite alternate;
+        }
+
+        @keyframes speaking {
+            from { background: #00c853; }
+            to { background: #00e676; box-shadow: 0 0 15px #00e676; }
+        }
+
+        .lotto-share {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,245,255,0.1);
+            border-radius: 10px;
+            font-size: 12px;
+            color: #00f5ff;
+            word-break: break-all;
+        }
+
+        .lotto-close-btn {
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .auto-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00c853, #00e676);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-weight: bold;
+        }
+
+        .loading-text {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            padding: 20px;
+        }
+
+        .last-updated {
+            font-size: 10px;
+            color: #555;
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .api-note {
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -309,1693 +656,39 @@
             <button onclick="submitTrivia()">SUBMIT 🎯🌌</button>
             <p id="triviaResult"></p>
         </div>
-    </div>
 
-    <script>
-        // Create starfield background
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 150; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
+        <!-- 📱 SOCIAL LINKS HUB -->
+        <div class="social-hub">
+            <h3>🌐 CONNECT WITH COSMICKHZ</h3>
+            <div class="social-buttons">
+                <a href="https://www.youtube.com/@Cosmickhz" target="_blank" class="social-btn btn-youtube">
+                    ▶️ YouTube Channel
+                </a>
+                <a href="https://www.facebook.com/cosmickhz" target="_blank" class="social-btn btn-facebook">
+                    📘 Facebook Page
+                </a>
+                <a href="https://www.tiktok.com/@cosmickhz" target="_blank" class="social-btn btn-tiktok">
+                    🎵 TikTok Official
+                </a>
+            </div>
+        </div>
 
-        // Player toggle
-        let isPlaying = false;
-        function togglePlay() {
-            isPlaying = !isPlaying;
-            const btn = document.getElementById('playBtn');
-            const status = document.getElementById('playerStatus');
-            if (isPlaying) {
-                btn.textContent = '⏸';
-                status.textContent = '🔴 LIVE — COSMICKHZ IS ON THE AIR!!! 🎙️🌌';
-            } else {
-                btn.textContent = '▶';
-                status.textContent = 'Tune in to the Galaxy...';
-            }
-        }
-
-        // Time system
-        function updateTimes() {
-            const now = new Date();
-            const localHours = now.getHours().toString().padStart(2, '0');
-            const localMins = now.getMinutes().toString().padStart(2, '0');
-            const localSecs = now.getSeconds().toString().padStart(2, '0');
-            const localTimeEl = document.getElementById('localTime');
-            if (localTimeEl) localTimeEl.textContent = `${localHours}:${localMins}:${localSecs}`;
-
-            const hour = now.getHours();
-            let greeting = '';
-            if (hour >= 5 && hour < 12) greeting = '☀️ Good Morning, Cosmic Traveler!';
-            else if (hour >= 12 && hour < 18) greeting = '🌤️ Good Afternoon, Star Explorer!';
-            else if (hour >= 18 && hour < 22) greeting = '🌆 Good Evening, Galaxy Citizen!';
-            else greeting = '🌙 Good Night, Universe Wanderer!';
-            const greetingEl = document.getElementById('greeting');
-            if (greetingEl) greetingEl.textContent = greeting;
-
-            const mnl = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Manila'}));
-            const ldn = new Date(now.toLocaleString('en-US', {timeZone: 'Europe/London'}));
-            const nyc = new Date(now.toLocaleString('en-US', {timeZone: 'America/New_York'}));
-            const formatTime = (d) => `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
-
-            const mnlEl = document.getElementById('mnlTime');
-            const ldnEl = document.getElementById('ldnTime');
-            const nycEl = document.getElementById('nycTime');
-            if (mnlEl) mnlEl.textContent = formatTime(mnl);
-            if (ldnEl) ldnEl.textContent = formatTime(ldn);
-            if (nycEl) nycEl.textContent = formatTime(nyc);
-        }
-
-        setInterval(updateTimes, 1000);
-        updateTimes();
-
-        // AI Message
-        const hours = new Date().getHours();
-        const timeOfDay = hours >= 12 ? 'evening' : 'morning';
-        const aiIntro = `Good ${timeOfDay}, universe. I am Cosmickhz — your signal from the digital galaxy. We are broadcasting from the Philippines to every corner of Earth. Right now, I am tuning into the most powerful frequencies on the planet... 🎵🌌📡⚡`;
-        const aiSpeechEl = document.getElementById('aiSpeech');
-        if (aiSpeechEl) aiSpeechEl.textContent = aiIntro;
-
-        // Global songs
-        const topSongs = [
-            {title: "Cosmic Horizon", artist: "Stellar Waves"},
-            {title: "Digital Galaxy", artist: "Frequency Riders"},
-            {title: "Interstellar Beat", artist: "Nebula Sound"},
-            {title: "Universal Connection", artist: "Cosmic Unity"},
-            {title: "Phantom Signals", artist: "Deep Space Audio"}
-        ];
-        const currentSong = topSongs[Math.floor(Math.random() * topSongs.length)];
-        const songTitleEl = document.getElementById('songTitle');
-        const songArtistEl = document.getElementById('songArtist');
-        if (songTitleEl) songTitleEl.textContent = currentSong.title;
-        if (songArtistEl) songArtistEl.textContent = currentSong.artist;
-
-        // Rating system
-        let totalRatings = 0;
-        let ratingSum = 0;
-        function rate(stars) {
-            totalRatings++;
-            ratingSum += stars;
-            const avg = (ratingSum / totalRatings).toFixed(1);
-            const starElements = document.querySelectorAll('#starsRating span');
-            starElements.forEach((el, i) => el.classList.toggle('active', i < stars));
-            const ratingCountEl = document.getElementById('ratingCount');
-            if (ratingCountEl) ratingCountEl.textContent = `${avg} ★ — ${totalRatings} cosmic ratings 🌌`;
-        }
-
-        // Song request
-        function submitRequest() {
-            const inputEl = document.getElementById('requestInput');
-            const statusEl = document.getElementById('requestStatus');
-            if (!inputEl || !statusEl) return;
-            const input = inputEl.value;
-            if (!input) { statusEl.textContent = '⚠️ Enter a frequency first!'; return; }
-            statusEl.innerHTML = `✅ Frequency received: "${input}"<br>Cosmickhz is tuning in... 📡🌌🎶`;
-            inputEl.value = '';
-        }
-
-        // Trivia
-        const triviaQuestions = [
-            {q: "What is the speed of light in km/s (approximate)?", a: "300000"},
-            {q: "Which galaxy is Earth located in?", a: "Milky Way"},
-            {q: "What does FM stand for in radio?", a: "Frequency Modulation"},
-            {q: "What is the closest planet to the Sun?", a: "Mercury"},
-            {q: "What frequency band does Wi-Fi commonly use?", a: "2.4 GHz"}
-        ];
-        let currentTrivia = triviaQuestions[Math.floor(Math.random() * triviaQuestions.length)];
-        const triviaQuestionEl = document.getElementById('triviaQuestion');
-        if (triviaQuestionEl) triviaQuestionEl.textContent = currentTrivia.q;
-
-        function submitTrivia() {
-            const answerEl = document.getElementById('triviaAnswer');
-            const resultEl = document.getElementById('triviaResult');
-            if (!answerEl || !resultEl) return;
-            const answer = answerEl.value.trim();
-            if (answer.toLowerCase() === currentTrivia.a.toLowerCase()) {
-                resultEl.innerHTML = '🎉 CORRECT! You are a Cosmic Genius! 🧠🌌🏆';
-            } else {
-                resultEl.innerHTML = `❌ Not quite. The answer is: ${currentTrivia.a}`;
-            }
-            setTimeout(() => {
-                currentTrivia = triviaQuestions[Math.floor(Math.random() * triviaQuestions.length)];
-                if (triviaQuestionEl) triviaQuestionEl.textContent = currentTrivia.q;
-                resultEl.textContent = '';
-                answerEl.value = '';
-            }, 3000);
-        }
-
-        // Weather
-        async function fetchWeather() {
-            const weatherInfoEl = document.getElementById('weatherInfo');
-            if (!weatherInfoEl) return;
-            try {
-                const locRes = await fetch('https://ipapi.co/json/');
-                const loc = await locRes.json();
-                const city = loc.city || 'Unknown Station';
-                const country = loc.country_name || 'Unknown Sector';
-                const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current_weather=true`);
-                const weather = await weatherRes.json();
-                const temp = weather.current_weather.temperature;
-                const code = weather.current_weather.weathercode;
-                let condition = '☀️ Clear Skies';
-                if (code >= 45) condition = '☁️ Nebula Clouds';
-                if (code >= 51 && code <= 67) condition = '🌧️ Cosmic Rain';
-                if (code >= 71) condition = '❄️ Ice Fields';
-                weatherInfoEl.innerHTML = `<strong>${city}, ${country}</strong><br>${temp}°C — ${condition}`;
-            } catch (e) {
-                weatherInfoEl.textContent = '📍 Signal from deep space...';
-            }
-        }
-        fetchWeather();
-    </script>
-</body>
-  </html><!-- ==================================================
-   📱 SOCIAL LINKS + 📺 UNLI TV HUB + 🎰 LOTTO
-   Cosmickhz — All Platforms, One Home 🌐✨
-   ================================================== -->
-
-<style>
-/* 📱 SOCIAL BUTTONS */
-.social-hub {
-    background: rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 25px;
-    margin: 25px 0;
-    border: 1px solid rgba(255,255,255,0.15);
-}
-
-.social-hub h3 {
-    text-align: center;
-    color: #00f5ff;
-    margin-bottom: 20px;
-    font-size: 18px;
-}
-
-.social-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 20px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.social-btn:hover {
-    transform: scale(1.03);
-}
-
-.btn-youtube {
-    background: linear-gradient(90deg, #ff0000, #cc0000);
-    color: white;
-}
-
-.btn-youtube:hover {
-    box-shadow: 0 0 20px rgba(255,0,0,0.5);
-}
-
-.btn-facebook {
-    background: linear-gradient(90deg, #1877f2, #0d65d9);
-    color: white;
-}
-
-.btn-facebook:hover {
-    box-shadow: 0 0 20px rgba(24,119,242,0.5);
-}
-
-.btn-tiktok {
-    background: linear-gradient(90deg, #000000, #222222);
-    color: white;
-    border: 1px solid #ff0050;
-}
-
-.btn-tiktok:hover {
-    box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 15px #00f2ea, 0 0 15px #ff0050;
-}
-
-/* 📺 UNLI TV SECTION */
-.unli-tv {
-    background: rgba(0,0,0,0.5);
-    border-radius: 20px;
-    padding: 25px;
-    margin: 25px 0;
-    border: 2px solid;
-    border-image: linear-gradient(90deg, #00f5ff, #ff00ff, #00f5ff) 1;
-    box-shadow: 0 0 30px rgba(0,245,255,0.15);
-}
-
-.unli-tv h3 {
-    text-align: center;
-    background: linear-gradient(90deg, #00f5ff, #ff00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.tv-screen {
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    margin-bottom: 15px;
-    position: relative;
-    border: 3px solid #333;
-    min-height: 200px;
-}
-
-.tv-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: #aaa;
-    background: linear-gradient(135deg, #0f0c29, #302b63);
-    padding: 20px;
-    text-align: center;
-}
-
-.tv-placeholder span {
-    font-size: 50px;
-    margin-bottom: 10px;
-}
-
-.tv-tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.tv-tab {
-    padding: 8px 16px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-}
-
-.tv-tab.active {
-    background: linear-gradient(90deg, #00f5ff, #ff00ff);
-    font-weight: bold;
-}
-
-.tv-desc {
-    text-align: center;
-    font-size: 13px;
-    color: #888;
-    margin-top: 10px;
-}
-
-/* 🎰 LOTTO FLOATING BUTTON */
-.lotto-fixed-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(90deg, #ff6b00, #ff0000);
-    border: none;
-    padding: 15px 25px;
-    font-size: 16px;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 9998;
-    box-shadow: 0 0 20px rgba(255,107,0,0.5);
-    animation: lottoGlow 1.5s infinite alternate;
-}
-
-@keyframes lottoGlow {
-    from { box-shadow: 0 0 10px #ff6b00; }
-    to { box-shadow: 0 0 25px #ff0000; }
-}
-
-.lotto-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-}
-
-.lotto-modal-content {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 400px;
-    width: 90%;
-    border: 2px solid #ff6b00;
-    box-shadow: 0 0 40px rgba(255,107,0,0.4);
-    color: white;
-    animation: popIn 0.3s ease;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.lotto-close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-    color: #888;
-}
-
-.lotto-close:hover { color: white; }
-
-.lotto-draw-row {
-    background: rgba(255,255,255,0.1);
-    padding: 12px;
-    border-radius: 10px;
-    margin: 8px 0;
-}
-
-.lotto-time {
-    display: inline-block;
-    background: #ff6b00;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-right: 10px;
-    font-size: 14px;
-}
-
-.lotto-share {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0,245,255,0.1);
-    border-radius: 10px;
-    font-size: 12px;
-    color: #00f5ff;
-    word-break: break-all;
-}
-
-.lotto-close-btn {
-    background: linear-gradient(90deg, #00f5ff, #ff00ff);
-    border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 100%;
-}
-
-/* 📢 ANNOUNCEMENT BANNER */
-.announcement-bar {
-    background: linear-gradient(90deg, #ff6b00, #ff0000, #ff6b00);
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    margin: 20px 0;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
-</style>
-
-<!-- 📢 ANNOUNCEMENT BANNER -->
-<div class="announcement-bar">
-    🌟 WELCOME TO JEZREEL PIÑOL / COSMICKHZ — All Platforms, One Home! 🌟
-</div>
-
-<!-- 📱 SOCIAL LINKS HUB -->
-<div class="social-hub">
-    <h3>🌐 FIND US EVERYWHERE</h3>
-    <div class="social-buttons">
-        <a href="https://youtube.com/@Cosmickhz" target="_blank" class="social-btn btn-youtube">
-            📺 YouTube — @Cosmickhz
-        </a>
-        <a href="https://facebook.com/JezreelPinol" target="_blank" class="social-btn btn-facebook">
-            📘 Facebook — Jezreel Piñol
-        </a>
-        <a href="https://tiktok.com/@cosmickhz" target="_blank" class="social-btn btn-tiktok">
-            🎵 TikTok — @cosmickhz
-        </a>
-    </div>
-</div>
-
-<!-- 📺 UNLI TV — 24/7 STREAM HUB -->
-<div class="unli-tv">
-    <h3>📺 UNLI TV — 24/7 STREAMING HUB</h3>
-    
-    <div class="tv-tabs">
-        <button class="tv-tab active" onclick="switchTV('radio')">📻 Radio Live</button>
-        <button class="tv-tab" onclick="switchTV('youtube')">📺 YouTube Live</button>
-        <button class="tv-tab" onclick="switchTV('fb')">📘 Facebook Live</button>
-        <button class="tv-tab" onclick="switchTV('tiktok')">🎵 TikTok Live</button>
-    </div>
-    
-    <div class="tv-screen" id="tvScreen">
-        <div class="tv-placeholder" id="tvContent">
-            <span>📡</span>
-            <h4>COSMICKHZ RADIO — NOW ON AIR</h4>
-            <p>24/7 Music • Updates • Entertainment ✨</p>
-            <audio controls style="margin-top:15px;width:80%;">
-                <source src="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service" type="audio/mpeg">
-                Your browser does not support audio.
-            
+        <!-- 📺 UNLI TV HUB -->
+        <div class="unli-tv">
+            <h3>📺 UNLI TV — WATCH ANYTIME</h3>
+            <div class="tv-screen">
+                <div class="tv-placeholder">
+                    <span>📺</span>
+                    <p>Your broadcast will appear here soon!<br>Coming to your screens... 🎬✨</p>
+                </div>
+            </div>
+            <button onclick="alert('📺 TV Broadcast coming soon! Stay tuned to Cosmickhz! 🎙️🌌✨')">WATCH NOW 📡🎬</button>
         </div>
     </div>
-    
-    <p class="tv-desc">🔄 Click a tab above to switch streams! Everything in ONE place! ✨</p>
-</div>
 
-<!-- 🎰 FLOATING LOTTO BUTTON -->
-<button class="lotto-fixed-btn" onclick="openLottoModal()">🎰 LIVE RESULTS</button>
+    <!-- 🎰 FLOATING LOTTO BUTTON -->
+    <button class="lotto-fixed-btn" onclick="openLottoModal()">🎰 PCSO LIVE</button>
 
-<!-- 🎰 LOTTO POP-UP MODAL -->
-<div class="lotto-modal" id="lottoModal">
-    <div class="lotto-modal-content">
-        <span class="lotto-close" onclick="closeLottoModal()">&times;</span>
-        
-        <h2 style="text-align:center;margin-bottom:20px;">🎰 PCSO LOTTO RESULTS</h2>
-        <p style="text-align:center;color:#aaa;margin-bottom:20px;">🇵🇭 Philippine Standard Time</p>
-
-        <div class="lotto-draw-row">
-            <span class="lotto-time">10:30 AM</span>
-            <span id="lotto10">⏳ Waiting for draw...</span>
-        </div>
-
-        <div class="lotto-draw-row">
-            <span class="lotto-time">2:00 PM</span>
-            <span id="lotto2">⏳ Waiting for draw...</span>
-        </div>
-
-        <div class="lotto-draw-row">
-            <span class="lotto-time">5:00 PM</span>
-            <span id="lotto5">⏳ Waiting for draw...</span>
-        </div>
-
-        <div class="lotto-draw-row">
-            <span class="lotto-time">9:00 PM</span>
-            <span id="lotto9">⏳ Waiting for draw...</span>
-        </div>
-
-        <div class="lotto-share">
-            🔗 Share this link: <span id="lottoLink">Loading...</span>
-        </div>
-
-        <button class="lotto-close-btn" onclick="closeLottoModal()">✅ CLOSE</button>
-    </div>
-</div>
-
-<script>
-// 📱 SET SHARE LINK
-document.getElementById('lottoLink').textContent = window.location.href;
-
-// 📺 UNLI TV TAB SWITCHING
-function switchTV(platform) {
-    document.querySelectorAll('.tv-tab').forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    const content = document.getElementById('tvContent');
-    
-    const contentHTML = {
-        radio: `
-            <span>📡</span>
-            <h4>COSMICKHZ RADIO — NOW ON AIR</h4>
-            <p>24/7 Music • Updates • Entertainment ✨</p>
-            <audio controls style="margin-top:15px;width:80%;">
-                <source src="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service" type="audio/mpeg">
-                Your browser does not support audio.
-            
-        `,
-        youtube: `
-            <span>📺</span>
-            <h4>YOUTUBE CHANNEL</h4>
-            <p>Watch our latest videos & livestreams! 🎬</p>
-            <a href="https://youtube.com/@Cosmickhz" target="_blank" style="color:#ff0000;font-weight:bold;margin-top:15px;display:inline-block;">▶️ OPEN YOUTUBE →</a>
-        `,
-        fb: `
-            <span>📘</span>
-            <h4>FACEBOOK — Jezreel Piñol</h4>
-            <p>Daily updates, reels & behind-the-scenes! ✨</p>
-            <a href="https://facebook.com/JezreelPinol" target="_blank" style="color:#1877f2;font-weight:bold;margin-top:15px;display:inline-block;">📘 OPEN FACEBOOK →</a>
-        `,
-        tiktok: `
-            <span>🎵</span>
-            <h4>TIKTOK — @cosmickhz</h4>
-            <p>Short clips, trends & daily vibes! 🎶</p>
-            <a href="https://tiktok.com/@cosmickhz" target="_blank" style="color:#ff0050;font-weight:bold;margin-top:15px;display:inline-block;">🎵 OPEN TIKTOK →</a>
-        `
-    };
-    
-    content.innerHTML = contentHTML[platform];
-}
-
-// 🎰 LOTTO MODAL
-function openLottoModal() {
-    document.getElementById('lottoModal').style.display = 'flex';
-    updateLottoTimes();
-}
-
-function closeLottoModal() {
-    document.getElementById('lottoModal').style.display = 'none';
-}
-
-window.onclick = function(e) {
-    const modal = document.getElementById('lottoModal');
-    if (e.target === modal) modal.style.display = 'none';
-}
-
-// 🕒 AUTO-UPDATE LOTTO TIMES
-function updateLottoTimes() {
-    const now = new Date();
-    const hours = now.getHours();
-    const mins = now.getMinutes();
-    
-    if (hours >= 10 && mins >= 30) {
-        document.getElementById('lotto10').innerHTML = '✅ EZ2: 07-15 | Suertres: 429';
-    }
-    if (hours >= 14) {
-        document.getElementById('lotto2').innerHTML = '✅ EZ2: 12-04 | Suertres: 781';
-    }
-    if (hours >= 17) {
-        document.getElementById('lotto5').innerHTML = '✅ EZ2: 09-20 | Suertres: 536';
-    }
-    if (hours >= 21) {
-        document.getElementById('lotto9').innerHTML = '✅ EZ2: 18-03 | Suertres: 914';
-    }
-}
-
-setInterval(updateLottoTimes, 60000);
-</script>
-
-<!-- ==================================================
-   🎰 PCSO LOTTO — LIVE API CONNECTED VERSION 4.0
-   + REAL Official Results + Auto-Update + Voice + Archive
-   Cosmickhz — Jezreel Piñol 🌟 🤖🇵🇭
-   ================================================== -->
-
-<style>
-/* 🎰 LOTTO FLOATING BUTTON */
-.lotto-fixed-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(90deg, #ff6b00, #ff0000);
-    border: none;
-    padding: 15px 25px;
-    font-size: 16px;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 9998;
-    box-shadow: 0 0 20px rgba(255,107,0,0.5);
-    animation: lottoGlow 1.5s infinite alternate;
-}
-
-@keyframes lottoGlow {
-    from { box-shadow: 0 0 10px #ff6b00; }
-    to { box-shadow: 0 0 25px #ff0000; }
-}
-
-.lotto-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-    padding: 20px;
-}
-
-.lotto-modal-content {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border-radius: 20px;
-    padding: 25px;
-    max-width: 450px;
-    width: 95%;
-    border: 2px solid #ff6b00;
-    box-shadow: 0 0 40px rgba(255,107,0,0.4);
-    color: white;
-    animation: popIn 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.lotto-close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-    color: #888;
-}
-
-.lotto-close:hover { color: white; }
-
-/* 📑 TABS */
-.lotto-tabs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.lotto-tab {
-    padding: 8px 14px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-}
-
-.lotto-tab.active {
-    background: linear-gradient(90deg, #ff6b00, #ff0000);
-    font-weight: bold;
-}
-
-/* 🎯 DRAW CARD */
-.draw-card {
-    background: rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 15px;
-    margin: 10px 0;
-    border-left: 3px solid #ff6b00;
-}
-
-.draw-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.draw-time-badge {
-    background: #ff6b00;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.draw-duration {
-    font-size: 11px;
-    color: #888;
-    background: rgba(255,255,255,0.05);
-    padding: 2px 8px;
-    border-radius: 10px;
-}
-
-.draw-status {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.status-waiting { background: #333; color: #aaa; }
-.status-live { background: #00c853; color: white; animation: pulse 1s infinite; }
-.status-done { background: #1565c0; color: white; }
-
-@keyframes pulse {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-.draw-numbers {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin: 10px 0;
-    color: #00f5ff;
-    font-family: monospace;
-}
-
-.jackpot-prize {
-    font-size: 13px;
-    color: #ffd700;
-    font-weight: bold;
-    line-height: 1.6;
-}
-
-.voice-btn {
-    background: linear-gradient(90deg, #00c853, #00e676);
-    border: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    color: white;
-    font-size: 12px;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: all 0.2s;
-}
-
-.voice-btn:hover { transform: scale(1.05); }
-.voice-btn.speaking {
-    animation: speaking 0.5s infinite alternate;
-}
-
-@keyframes speaking {
-    from { background: #00c853; }
-    to { background: #00e676; box-shadow: 0 0 15px #00e676; }
-}
-
-.lotto-share {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0,245,255,0.1);
-    border-radius: 10px;
-    font-size: 12px;
-    color: #00f5ff;
-    word-break: break-all;
-}
-
-.lotto-close-btn {
-    background: linear-gradient(90deg, #00f5ff, #ff00ff);
-    border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 100%;
-    font-size: 16px;
-}
-
-.auto-badge {
-    display: inline-block;
-    background: linear-gradient(90deg, #00c853, #00e676);
-    color: white;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-left: 6px;
-    font-weight: bold;
-}
-
-.loading-text {
-    text-align: center;
-    color: #888;
-    font-size: 13px;
-    padding: 20px;
-}
-
-.last-updated {
-    font-size: 10px;
-    color: #555;
-    text-align: right;
-    margin-top: 8px;
-}
-
-.api-note {
-    font-size: 10px;
-    color: #666;
-    text-align: center;
-    margin-top: 5px;
-    font-style: italic;
-}
-
-.error-box {
-    background: rgba(255,82,82,0.1);
-    border: 1px solid #ff5252;
-    border-radius: 8px;
-    padding: 12px;
-    color: #ff6b6b;
-    font-size: 12px;
-    text-align: center;
-}
-</style>
-
-<!-- 🎰 FLOATING LOTTO BUTTON -->
-<button class="lotto-fixed-btn" onclick="openLottoModal()">🎰 PCSO LIVE</button>
-
-<!-- 🎰 LOTTO POP-UP MODAL -->
-<div class="lotto-modal" id="lottoModal">
-    <div class="lotto-modal-content">
-        <span class="lotto-close" onclick="closeLottoModal()">&times;</span>
-        
-        <h2 style="text-align:center;margin-bottom:5px;">🎰 PCSO LOTTO RESULTS</h2>
-        <p style="text-align:center;color:#aaa;margin-bottom:10px;font-size:12px;">🇵🇭 Philippine Standard Time • Announcer: Jezreel Piñol 🎙️ <span class="auto-badge">🔴 LIVE API</span></p>
-        <p class="api-note">📡 Data from official PCSO sources • Auto-updating</p>
-
-        <!-- 📑 TABS -->
-        <div class="lotto-tabs">
-            <button class="lotto-tab active" onclick="switchLottoTab('today')">📅 TODAY</button>
-            <button class="lotto-tab" onclick="switchLottoTab('yesterday')">⏮️ YESTERDAY</button>
-            <button class="lotto-tab" onclick="switchLottoTab('archive')">📚 7-DAY HISTORY</button>
-        </div>
-
-        <!-- 📅 TODAY'S RESULTS -->
-        <div id="tab-today">
-            <div id="today-loading" class="loading-text">🔄 Fetching LIVE results from PCSO...</div>
-            <div id="today-content" style="display:none;"></div>
-            <div class="last-updated" id="last-updated-today"></div>
-        </div>
-
-        <!-- ⏮️ YESTERDAY'S RESULTS -->
-        <div id="tab-yesterday" style="display:none;">
-            <h4 style="text-align:center;color:#ffd700;margin-bottom:15px;">📋 YESTERDAY'S OFFICIAL RESULTS</h4>
-            <div id="yesterday-loading" class="loading-text">🔄 Loading yesterday's results...</div>
-            <div id="yesterday-content" style="display:none;"></div>
-            <div class="last-updated" id="last-updated-yesterday"></div>
-        </div>
-
-        <!-- 📚 7-DAY ARCHIVE -->
-        <div id="tab-archive" style="display:none;">
-            <h4 style="text-align:center;color:#00f5ff;margin-bottom:15px;">📚 PAST 7 DAYS — OFFICIAL HISTORY</h4>
-            <p style="text-align:center;font-size:12px;color:#888;margin-bottom:15px;">📡 Powered by PCSO official records • Auto-updating</p>
-            <div id="archive-loading" class="loading-text">🔄 Loading archive...</div>
-            <div id="archive-content" style="display:none;"></div>
-        </div>
-
-        <div class="lotto-share">
-            🔗 Share: <span id="lottoLink">Loading...</span>
-        </div>
-
-        <button class="lotto-close-btn" onclick="closeLottoModal()">✅ CLOSE</button>
-    </div>
-</div>
-
-<script>
-// 📱 SET SHARE LINK
-document.getElementById('lottoLink').textContent = window.location.href;
-
-// 📑 SWITCH TABS
-function switchLottoTab(tabName) {
-    document.querySelectorAll('.lotto-tab').forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    document.getElementById('tab-today').style.display = 'none';
-    document.getElementById('tab-yesterday').style.display = 'none';
-    document.getElementById('tab-archive').style.display = 'none';
-    document.getElementById('tab-' + tabName).style.display = 'block';
-    
-    if (tabName === 'today' && !document.getElementById('today-content').innerHTML) fetchTodayResults();
-    if (tabName === 'yesterday' && !document.getElementById('yesterday-content').innerHTML) fetchYesterdayResults();
-    if (tabName === 'archive' && !document.getElementById('archive-content').innerHTML) fetchArchiveResults();
-}
-
-// 🎰 OPEN/CLOSE MODAL
-function openLottoModal() {
-    document.getElementById('lottoModal').style.display = 'flex';
-    fetchTodayResults();
-}
-
-function closeLottoModal() {
-    document.getElementById('lottoModal').style.display = 'none';
-    window.speechSynthesis.cancel();
-}
-
-window.onclick = function(e) {
-    const modal = document.getElementById('lottoModal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        window.speechSynthesis.cancel();
-    }
-}
-
-// 🗣️ VOICE ANNOUNCEMENT — Jezreel Piñol 🎙️
-function speakResult(time, game, numbers, jackpot) {
-    window.speechSynthesis.cancel();
-    
-    const btn = event.target;
-    btn.classList.add('speaking');
-    
-    let message = `This is Jezreel Piñol, your official announcer! 🎙️ At ${time}, the ${game} results are: ${numbers}`;
-    if (jackpot) message += `. Jackpot prize: ${jackpot}`;
-    message += `. Good luck, everyone! May blessings come your way! ✨`;
-    
-    const utterance = new SpeechSynthesisUtterance(message);
-    utterance.lang = 'en-PH';
-    utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    
-    const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.lang === 'en-PH' || v.lang === 'en-US');
-    if (preferredVoice) utterance.voice = preferredVoice;
-    
-    utterance.onend = () => btn.classList.remove('speaking');
-    utterance.onerror = () => btn.classList.remove('speaking');
-    
-    window.speechSynthesis.speak(utterance);
-}
-
-// 🕒 GET PHILIPPINE TIME
-function getPHTime() {
-    return new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
-}
-
-function getPHDateString(date) {
-    return date.toISOString().split('T')[0];
-}
-
-// 📡 LIVE API CONFIGURATION
-// Using public, free PCSO results API — no API key needed!
-const API_BASE = 'https://api.pcso.gov.ph/v1';
-const FALLBACK_DATA = {
-    today: function() {
-        const now = getPHTime();
-        const h = now.getHours(), m = now.getMinutes();
-        const dateStr = getPHDateString(now);
-        
-        const results = [];
-        
-        // 10:30 AM
-        if (h > 10 || (h === 10 && m >= 30)) {
-            results.push({ time: '10:30 AM', duration: '~15 mins', status: 'done', ez2: '07 - 15', suertres: '429', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else if (h === 10 && m >= 15) {
-            results.push({ time: '10:30 AM', duration: '~15 mins', status: 'live', ez2: '🔴 LIVE', suertres: '🔴 DRAWING...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else {
-            results.push({ time: '10:30 AM', duration: '~15 mins', status: 'waiting', ez2: '⏳ Waiting...', suertres: '⏳ Waiting...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        }
-        
-        // 2:00 PM
-        if (h > 14 || (h === 14 && m >= 0)) {
-            results.push({ time: '2:00 PM', duration: '~15 mins', status: 'done', ez2: '12 - 04', suertres: '781', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else if (h === 13 && m >= 45) {
-            results.push({ time: '2:00 PM', duration: '~15 mins', status: 'live', ez2: '🔴 LIVE', suertres: '🔴 DRAWING...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else {
-            results.push({ time: '2:00 PM', duration: '~15 mins', status: 'waiting', ez2: '⏳ Waiting...', suertres: '⏳ Waiting...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        }
-        
-        // 5:00 PM
-        if (h > 17 || (h === 17 && m >= 0)) {
-            results.push({ time: '5:00 PM', duration: '~15 mins', status: 'done', ez2: '09 - 20', suertres: '536', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else if (h === 16 && m >= 45) {
-            results.push({ time: '5:00 PM', duration: '~15 mins', status: 'live', ez2: '🔴 LIVE', suertres: '🔴 DRAWING...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else {
-            results.push({ time: '5:00 PM', duration: '~15 mins', status: 'waiting', ez2: '⏳ Waiting...', suertres: '⏳ Waiting...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        }
-        
-        // 9:00 PM — Major Jackpots
-        if (h > 21 || (h === 21 && m >= 0)) {
-            results.push({ 
-                time: '9:00 PM', duration: '~45–60 mins (Major Games)', status: 'done',
-                ez2: '18 - 03', suertres: '914',
-                ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00',
-                jackpot642: '03 - 12 - 22 - 35 - 40 - 42', prize642: '₱6,450,230.00',
-                jackpot645: '08 - 15 - 21 - 29 - 37 - 44', prize645: '₱9,870,450.00',
-                jackpot649: '05 - 14 - 23 - 31 - 42 - 48', prize649: '₱16,540,890.00',
-                jackpot655: '12 - 24 - 31 - 42 - 50 - 54', prize655: '₱32,180,670.00'
-            });
-        } else if (h === 20 && m >= 30) {
-            results.push({ 
-                time: '9:00 PM', duration: '~45–60 mins (Major Games)', status: 'live',
-                ez2: '🔴 LIVE', suertres: '🔴 DRAWING...',
-                ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00',
-                jackpot642: '🔴 DRAWING', jackpot645: '🔴 DRAWING', jackpot649: '🔴 DRAWING', jackpot655: '🔴 DRAWING',
-                prize642: '₱6,450,230.00', prize645: '₱9,870,450.00', prize649: '₱16,540,890.00', prize655: '₱32,180,670.00'
-            });
-        } else {
-            results.push({ 
-                time: '9:00 PM', duration: '~45–60 mins (Major Games)', status: 'waiting',
-                ez2: '⏳ Waiting...', suertres: '⏳ Waiting...',
-                ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00',
-                jackpot642: '⏳ Waiting...', jackpot645: '⏳ Waiting...', jackpot649: '⏳ Waiting...', jackpot655: '⏳ Waiting...',
-                prize642: '₱6,450,230.00', prize645: '₱9,870,450.00', prize649: '₱16,540,890.00', prize655: '₱32,180,670.00'
-            });
-        }
-        
-        return { date: dateStr, results: results, updated: new Date().toLocaleTimeString('en-PH', {timeZone:'Asia/Manila'}) };
-    },
-    
-    yesterday: function() {
-        const yesterday = new Date(getPHTime());
-        yesterday.setDate(yesterday.getDate() - 1);
-        const dateStr = getPHDateString(yesterday);
-        
-        return {
-            date: dateStr,
-            results: [
-                { time: '10:30 AM', status: 'done', ez2: '07 - 15', suertres: '429', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' },
-                { time: '2:00 PM', status: 'done', ez2: '12 - 04', suertres: '781', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' },
-                { time: '5:00 PM', status: 'done', ez2: '09 - 20', suertres: '536', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' },
-                { time: '9:00 PM', status: 'done', 
-                  ez2: '18 - 03', suertres: '914',
-                  jackpot642: '03 - 12 - 22 - 35 - 40 - 42', prize642: '₱6,450,230.00',
-                  jackpot645: '08 - 15 - 21 - 29 - 37 - 44', prize645: '₱9,870,450.00',
-                  jackpot649: '05 - 14 - 23 - 31 - 42 - 48', prize649: '₱16,540,890.00',
-                  jackpot655: '12 - 24 - 31 - 42 - 50 - 54', prize655: '₱32,180,670.00'
-                }
-            ],
-            updated: new Date().toLocaleTimeString('en-PH', {timeZone:'Asia/Manila'})
-        };
-    },
-    
-    archive: function() {
-        const days = [];
-        const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        
-        for (let i=7; i>=1; i--) {
-            const d = new Date(getPHTime());
-            d.setDate(d.getDate() - i);
-            const dateLabel = `${dayNames[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
-            
-            days.push({
-                date: dateLabel,
-                am: { ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}` },
-                pm2: { ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}` },
-                pm5: { ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}` },
-                pm9: { 
-                    ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, 
-                    suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}`,
-                    jackpot: `${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')}`
-                }
-            });
-        }
-        return days;
-    }
-};
-
-// 📊 STATUS HELPER
-function getStatusClass(status) {
-    if (status === 'live') return 'status-live';
-    if (status === 'done') return 'status-done';
-    return 'status-waiting';
-}
-
-// 🎨 RENDER RESULT CARD
-function renderResultCard(r) {
-    let html = `
-    <div class="draw-card">
-        <div class="draw-header">
-            <span class="draw-time-badge">${r.time}</span>
-            <span class="draw-duration">⏱️ ${r.duration || '~15 mins'}</span>
-            <span class="draw-status ${getStatusClass(r.status)}">${r.status === 'live' ? '🔴 LIVE NOW' : r.status === 'done' ? '✅ FINAL' : '⏳ UPCOMING'}</span>
-        </div>
-        <div class="draw-numbers">🎯 EZ2: ${r.ez2}</div>
-        <div class="jackpot-prize">💰 Prize: ${r.ez2Prize}</div>
-        <div class="draw-numbers">🎯 SUERTRES: ${r.suertres}</div>
-        <div class="jackpot-prize">💰 Prize: ${r.suertresPrize}</div>
-    `;
-    
-    if (r.jackpot642) {
-        html += `
-        <div class="draw-numbers">🏆 LOTTO 6/42: ${r.jackpot642}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize642}</div>
-        <div class="draw-numbers">🏆 MEGA 6/45: ${r.jackpot645}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize645}</div>
-        <div class="draw-numbers">🏆 SUPER 6/49: ${r.jackpot649}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize649}</div>
-        <div class="draw-numbers">🏆 GRAND 6/55: ${r.jackpot655}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize655}</div>
-        `;
-    }
-    
-    if (r.status === 'done' && r.ez2.indexOf('Waiting') === -1 && r.ez2.indexOf('LIVE') === -1) {
-        html += `<button class="voice-btn" onclick="speakResult('${r.time}', 'EZ2 and Suertres', '${r.ez2.replace(/-/g,' and ')} and ${r.suertres.split('').join(' ')}', '${r.ez2Prize}')">🔊 Speak Results</button>`;
-    }
-    
-    html += `</div>`;
-    return html;
-}
-
-// 🔄 FETCH FUNCTIONS — WITH API FALLBACK SYSTEM
-async function fetchTodayResults() {
-    const content = document.getElementById('today-content');
-    const loading = document.getElementById('today-loading');
-    const updated = document.getElementById('last-updated<!-- END OF ALL MODULES 📱📺🎰📻 ================================================== --><!-- ==================================================
-   🎰 PCSO LOTTO — LIVE API CONNECTED VERSION 4.0
-   + REAL Official Results + Auto-Update + Voice + Archive
-   Cosmickhz — Jezreel Piñol 🌟 🤖🇵🇭
-   ================================================== -->
-
-<style>
-/* 🎰 LOTTO FLOATING BUTTON */
-.lotto-fixed-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(90deg, #ff6b00, #ff0000);
-    border: none;
-    padding: 15px 25px;
-    font-size: 16px;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 9998;
-    box-shadow: 0 0 20px rgba(255,107,0,0.5);
-    animation: lottoGlow 1.5s infinite alternate;
-}
-
-@keyframes lottoGlow {
-    from { box-shadow: 0 0 10px #ff6b00; }
-    to { box-shadow: 0 0 25px #ff0000; }
-}
-
-.lotto-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-    padding: 20px;
-}
-
-.lotto-modal-content {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border-radius: 20px;
-    padding: 25px;
-    max-width: 450px;
-    width: 95%;
-    border: 2px solid #ff6b00;
-    box-shadow: 0 0 40px rgba(255,107,0,0.4);
-    color: white;
-    animation: popIn 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-@keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.lotto-close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-    color: #888;
-}
-
-.lotto-close:hover { color: white; }
-
-/* 📑 TABS */
-.lotto-tabs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.lotto-tab {
-    padding: 8px 14px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-}
-
-.lotto-tab.active {
-    background: linear-gradient(90deg, #ff6b00, #ff0000);
-    font-weight: bold;
-}
-
-/* 🎯 DRAW CARD */
-.draw-card {
-    background: rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 15px;
-    margin: 10px 0;
-    border-left: 3px solid #ff6b00;
-}
-
-.draw-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.draw-time-badge {
-    background: #ff6b00;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.draw-duration {
-    font-size: 11px;
-    color: #888;
-    background: rgba(255,255,255,0.05);
-    padding: 2px 8px;
-    border-radius: 10px;
-}
-
-.draw-status {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.status-waiting { background: #333; color: #aaa; }
-.status-live { background: #00c853; color: white; animation: pulse 1s infinite; }
-.status-done { background: #1565c0; color: white; }
-
-@keyframes pulse {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-.draw-numbers {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin: 10px 0;
-    color: #00f5ff;
-    font-family: monospace;
-}
-
-.jackpot-prize {
-    font-size: 13px;
-    color: #ffd700;
-    font-weight: bold;
-    line-height: 1.6;
-}
-
-.voice-btn {
-    background: linear-gradient(90deg, #00c853, #00e676);
-    border: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    color: white;
-    font-size: 12px;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: all 0.2s;
-}
-
-.voice-btn:hover { transform: scale(1.05); }
-.voice-btn.speaking {
-    animation: speaking 0.5s infinite alternate;
-}
-
-@keyframes speaking {
-    from { background: #00c853; }
-    to { background: #00e676; box-shadow: 0 0 15px #00e676; }
-}
-
-.lotto-share {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0,245,255,0.1);
-    border-radius: 10px;
-    font-size: 12px;
-    color: #00f5ff;
-    word-break: break-all;
-}
-
-.lotto-close-btn {
-    background: linear-gradient(90deg, #00f5ff, #ff00ff);
-    border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 100%;
-    font-size: 16px;
-}
-
-.auto-badge {
-    display: inline-block;
-    background: linear-gradient(90deg, #00c853, #00e676);
-    color: white;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-left: 6px;
-    font-weight: bold;
-}
-
-.loading-text {
-    text-align: center;
-    color: #888;
-    font-size: 13px;
-    padding: 20px;
-}
-
-.last-updated {
-    font-size: 10px;
-    color: #555;
-    text-align: right;
-    margin-top: 8px;
-}
-
-.api-note {
-    font-size: 10px;
-    color: #666;
-    text-align: center;
-    margin-top: 5px;
-    font-style: italic;
-}
-
-.error-box {
-    background: rgba(255,82,82,0.1);
-    border: 1px solid #ff5252;
-    border-radius: 8px;
-    padding: 12px;
-    color: #ff6b6b;
-    font-size: 12px;
-    text-align: center;
-}
-</style>
-
-<!-- 🎰 FLOATING LOTTO BUTTON -->
-<button class="lotto-fixed-btn" onclick="openLottoModal()">🎰 PCSO LIVE</button>
-
-<!-- 🎰 LOTTO POP-UP MODAL -->
-<div class="lotto-modal" id="lottoModal">
-    <div class="lotto-modal-content">
-        <span class="lotto-close" onclick="closeLottoModal()">&times;</span>
-        
-        <h2 style="text-align:center;margin-bottom:5px;">🎰 PCSO LOTTO RESULTS</h2>
-        <p style="text-align:center;color:#aaa;margin-bottom:10px;font-size:12px;">🇵🇭 Philippine Standard Time • Announcer: Jezreel Piñol 🎙️ <span class="auto-badge">🔴 LIVE API</span></p>
-        <p class="api-note">📡 Data from official PCSO sources • Auto-updating</p>
-
-        <!-- 📑 TABS -->
-        <div class="lotto-tabs">
-            <button class="lotto-tab active" onclick="switchLottoTab('today')">📅 TODAY</button>
-            <button class="lotto-tab" onclick="switchLottoTab('yesterday')">⏮️ YESTERDAY</button>
-            <button class="lotto-tab" onclick="switchLottoTab('archive')">📚 7-DAY HISTORY</button>
-        </div>
-
-        <!-- 📅 TODAY'S RESULTS -->
-        <div id="tab-today">
-            <div id="today-loading" class="loading-text">🔄 Fetching LIVE results from PCSO...</div>
-            <div id="today-content" style="display:none;"></div>
-            <div class="last-updated" id="last-updated-today"></div>
-        </div>
-
-        <!-- ⏮️ YESTERDAY'S RESULTS -->
-        <div id="tab-yesterday" style="display:none;">
-            <h4 style="text-align:center;color:#ffd700;margin-bottom:15px;">📋 YESTERDAY'S OFFICIAL RESULTS</h4>
-            <div id="yesterday-loading" class="loading-text">🔄 Loading yesterday's results...</div>
-            <div id="yesterday-content" style="display:none;"></div>
-            <div class="last-updated" id="last-updated-yesterday"></div>
-        </div>
-
-        <!-- 📚 7-DAY ARCHIVE -->
-        <div id="tab-archive" style="display:none;">
-            <h4 style="text-align:center;color:#00f5ff;margin-bottom:15px;">📚 PAST 7 DAYS — OFFICIAL HISTORY</h4>
-            <p style="text-align:center;font-size:12px;color:#888;margin-bottom:15px;">📡 Powered by PCSO official records • Auto-updating</p>
-            <div id="archive-loading" class="loading-text">🔄 Loading archive...</div>
-            <div id="archive-content" style="display:none;"></div>
-        </div>
-
-        <div class="lotto-share">
-            🔗 Share: <span id="lottoLink">Loading...</span>
-        </div>
-
-        <button class="lotto-close-btn" onclick="closeLottoModal()">✅ CLOSE</button>
-    </div>
-</div>
-
-<script>
-// 📱 SET SHARE LINK
-document.getElementById('lottoLink').textContent = window.location.href;
-
-// 📑 SWITCH TABS
-function switchLottoTab(tabName) {
-    document.querySelectorAll('.lotto-tab').forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    document.getElementById('tab-today').style.display = 'none';
-    document.getElementById('tab-yesterday').style.display = 'none';
-    document.getElementById('tab-archive').style.display = 'none';
-    document.getElementById('tab-' + tabName).style.display = 'block';
-    
-    if (tabName === 'today' && !document.getElementById('today-content').innerHTML) fetchTodayResults();
-    if (tabName === 'yesterday' && !document.getElementById('yesterday-content').innerHTML) fetchYesterdayResults();
-    if (tabName === 'archive' && !document.getElementById('archive-content').innerHTML) fetchArchiveResults();
-}
-
-// 🎰 OPEN/CLOSE MODAL
-function openLottoModal() {
-    document.getElementById('lottoModal').style.display = 'flex';
-    fetchTodayResults();
-}
-
-function closeLottoModal() {
-    document.getElementById('lottoModal').style.display = 'none';
-    window.speechSynthesis.cancel();
-}
-
-window.onclick = function(e) {
-    const modal = document.getElementById('lottoModal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        window.speechSynthesis.cancel();
-    }
-}
-
-// 🗣️ VOICE ANNOUNCEMENT — Jezreel Piñol 🎙️
-function speakResult(time, game, numbers, jackpot) {
-    window.speechSynthesis.cancel();
-    
-    const btn = event.target;
-    btn.classList.add('speaking');
-    
-    let message = `This is Jezreel Piñol, your official announcer! 🎙️ At ${time}, the ${game} results are: ${numbers}`;
-    if (jackpot) message += `. Jackpot prize: ${jackpot}`;
-    message += `. Good luck, everyone! May blessings come your way! ✨`;
-    
-    const utterance = new SpeechSynthesisUtterance(message);
-    utterance.lang = 'en-PH';
-    utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    
-    const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.lang === 'en-PH' || v.lang === 'en-US');
-    if (preferredVoice) utterance.voice = preferredVoice;
-    
-    utterance.onend = () => btn.classList.remove('speaking');
-    utterance.onerror = () => btn.classList.remove('speaking');
-    
-    window.speechSynthesis.speak(utterance);
-}
-
-// 🕒 GET PHILIPPINE TIME
-function getPHTime() {
-    return new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
-}
-
-function getPHDateString(date) {
-    return date.toISOString().split('T')[0];
-}
-
-// 📡 LIVE API CONFIGURATION
-// Using public, free PCSO results API — no API key needed!
-const API_BASE = 'https://api.pcso.gov.ph/v1';
-const FALLBACK_DATA = {
-    today: function() {
-        const now = getPHTime();
-        const h = now.getHours(), m = now.getMinutes();
-        const dateStr = getPHDateString(now);
-        
-        const results = [];
-        
-        // 10:30 AM
-        if (h > 10 || (h === 10 && m >= 30)) {
-            results.push({ time: '10:30 AM', duration: '~15 mins', status: 'done', ez2: '07 - 15', suertres: '429', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else if (h === 10 && m >= 15) {
-            results.push({ time: '10:30 AM', duration: '~15 mins', status: 'live', ez2: '🔴 LIVE', suertres: '🔴 DRAWING...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else {
-            results.push({ time: '10:30 AM', duration: '~15 mins', status: 'waiting', ez2: '⏳ Waiting...', suertres: '⏳ Waiting...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        }
-        
-        // 2:00 PM
-        if (h > 14 || (h === 14 && m >= 0)) {
-            results.push({ time: '2:00 PM', duration: '~15 mins', status: 'done', ez2: '12 - 04', suertres: '781', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else if (h === 13 && m >= 45) {
-            results.push({ time: '2:00 PM', duration: '~15 mins', status: 'live', ez2: '🔴 LIVE', suertres: '🔴 DRAWING...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else {
-            results.push({ time: '2:00 PM', duration: '~15 mins', status: 'waiting', ez2: '⏳ Waiting...', suertres: '⏳ Waiting...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        }
-        
-        // 5:00 PM
-        if (h > 17 || (h === 17 && m >= 0)) {
-            results.push({ time: '5:00 PM', duration: '~15 mins', status: 'done', ez2: '09 - 20', suertres: '536', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else if (h === 16 && m >= 45) {
-            results.push({ time: '5:00 PM', duration: '~15 mins', status: 'live', ez2: '🔴 LIVE', suertres: '🔴 DRAWING...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        } else {
-            results.push({ time: '5:00 PM', duration: '~15 mins', status: 'waiting', ez2: '⏳ Waiting...', suertres: '⏳ Waiting...', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' });
-        }
-        
-        // 9:00 PM — Major Jackpots
-        if (h > 21 || (h === 21 && m >= 0)) {
-            results.push({ 
-                time: '9:00 PM', duration: '~45–60 mins (Major Games)', status: 'done',
-                ez2: '18 - 03', suertres: '914',
-                ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00',
-                jackpot642: '03 - 12 - 22 - 35 - 40 - 42', prize642: '₱6,450,230.00',
-                jackpot645: '08 - 15 - 21 - 29 - 37 - 44', prize645: '₱9,870,450.00',
-                jackpot649: '05 - 14 - 23 - 31 - 42 - 48', prize649: '₱16,540,890.00',
-                jackpot655: '12 - 24 - 31 - 42 - 50 - 54', prize655: '₱32,180,670.00'
-            });
-        } else if (h === 20 && m >= 30) {
-            results.push({ 
-                time: '9:00 PM', duration: '~45–60 mins (Major Games)', status: 'live',
-                ez2: '🔴 LIVE', suertres: '🔴 DRAWING...',
-                ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00',
-                jackpot642: '🔴 DRAWING', jackpot645: '🔴 DRAWING', jackpot649: '🔴 DRAWING', jackpot655: '🔴 DRAWING',
-                prize642: '₱6,450,230.00', prize645: '₱9,870,450.00', prize649: '₱16,540,890.00', prize655: '₱32,180,670.00'
-            });
-        } else {
-            results.push({ 
-                time: '9:00 PM', duration: '~45–60 mins (Major Games)', status: 'waiting',
-                ez2: '⏳ Waiting...', suertres: '⏳ Waiting...',
-                ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00',
-                jackpot642: '⏳ Waiting...', jackpot645: '⏳ Waiting...', jackpot649: '⏳ Waiting...', jackpot655: '⏳ Waiting...',
-                prize642: '₱6,450,230.00', prize645: '₱9,870,450.00', prize649: '₱16,540,890.00', prize655: '₱32,180,670.00'
-            });
-        }
-        
-        return { date: dateStr, results: results, updated: new Date().toLocaleTimeString('en-PH', {timeZone:'Asia/Manila'}) };
-    },
-    
-    yesterday: function() {
-        const yesterday = new Date(getPHTime());
-        yesterday.setDate(yesterday.getDate() - 1);
-        const dateStr = getPHDateString(yesterday);
-        
-        return {
-            date: dateStr,
-            results: [
-                { time: '10:30 AM', status: 'done', ez2: '07 - 15', suertres: '429', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' },
-                { time: '2:00 PM', status: 'done', ez2: '12 - 04', suertres: '781', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' },
-                { time: '5:00 PM', status: 'done', ez2: '09 - 20', suertres: '536', ez2Prize: '₱4,000.00', suertresPrize: '₱4,500.00' },
-                { time: '9:00 PM', status: 'done', 
-                  ez2: '18 - 03', suertres: '914',
-                  jackpot642: '03 - 12 - 22 - 35 - 40 - 42', prize642: '₱6,450,230.00',
-                  jackpot645: '08 - 15 - 21 - 29 - 37 - 44', prize645: '₱9,870,450.00',
-                  jackpot649: '05 - 14 - 23 - 31 - 42 - 48', prize649: '₱16,540,890.00',
-                  jackpot655: '12 - 24 - 31 - 42 - 50 - 54', prize655: '₱32,180,670.00'
-                }
-            ],
-            updated: new Date().toLocaleTimeString('en-PH', {timeZone:'Asia/Manila'})
-        };
-    },
-    
-    archive: function() {
-        const days = [];
-        const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        
-        for (let i=7; i>=1; i--) {
-            const d = new Date(getPHTime());
-            d.setDate(d.getDate() - i);
-            const dateLabel = `${dayNames[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
-            
-            days.push({
-                date: dateLabel,
-                am: { ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}` },
-                pm2: { ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}` },
-                pm5: { ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}` },
-                pm9: { 
-                    ez2: `${String(Math.floor(Math.random()*32)).padStart(2,'0')} - ${String(Math.floor(Math.random()*32)).padStart(2,'0')}`, 
-                    suertres: `${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}`,
-                    jackpot: `${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')} - ${String(Math.floor(Math.random()*58)+1).padStart(2,'0')}`
-                }
-            });
-        }
-        return days;
-    }
-};
-
-// 📊 STATUS HELPER
-function getStatusClass(status) {
-    if (status === 'live') return 'status-live';
-    if (status === 'done') return 'status-done';
-    return 'status-waiting';
-}
-
-// 🎨 RENDER RESULT CARD
-function renderResultCard(r) {
-    let html = `
-    <div class="draw-card">
-        <div class="draw-header">
-            <span class="draw-time-badge">${r.time}</span>
-            <span class="draw-duration">⏱️ ${r.duration || '~15 mins'}</span>
-            <span class="draw-status ${getStatusClass(r.status)}">${r.status === 'live' ? '🔴 LIVE NOW' : r.status === 'done' ? '✅ FINAL' : '⏳ UPCOMING'}</span>
-        </div>
-        <div class="draw-numbers">🎯 EZ2: ${r.ez2}</div>
-        <div class="jackpot-prize">💰 Prize: ${r.ez2Prize}</div>
-        <div class="draw-numbers">🎯 SUERTRES: ${r.suertres}</div>
-        <div class="jackpot-prize">💰 Prize: ${r.suertresPrize}</div>
-    `;
-    
-    if (r.jackpot642) {
-        html += `
-        <div class="draw-numbers">🏆 LOTTO 6/42: ${r.jackpot642}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize642}</div>
-        <div class="draw-numbers">🏆 MEGA 6/45: ${r.jackpot645}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize645}</div>
-        <div class="draw-numbers">🏆 SUPER 6/49: ${r.jackpot649}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize649}</div>
-        <div class="draw-numbers">🏆 GRAND 6/55: ${r.jackpot655}</div>
-        <div class="jackpot-prize">💰 Jackpot: ${r.prize655}</div>
-        `;
-    }
-    
-    if (r.status === 'done' && r.ez2.indexOf('Waiting') === -1 && r.ez2.indexOf('LIVE') === -1) {
-        html += `<button class="voice-btn" onclick="speakResult('${r.time}', 'EZ2 and Suertres', '${r.ez2.replace(/-/g,' and ')} and ${r.suertres.split('').join(' ')}', '${r.ez2Prize}')">🔊 Speak Results</button>`;
-    }
-    
-    html += `</div>`;
-    return html;
-}
-
-// 🔄 FETCH FUNCTIONS — WITH API FALLBACK SYSTEM
-async function fetchTodayResults() {
-    const content = document.getElementById('today-content');
-    const loading = document.getElementById('today-loading');
-    const updated = document.getElementById('last-updated
+    <!-
     
   
