@@ -42,653 +42,564 @@
         }
 
         .container {
-            max-width: 700px;
-            margin: 0 auto;
             position: relative;
             z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .header {
+        header {
             text-align: center;
             padding: 30px 20px;
+            border-bottom: 1px solid rgba(100, 100, 255, 0.3);
             margin-bottom: 30px;
         }
 
-        .header h1 {
+        h1 {
             font-size: 2.5rem;
-            background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00);
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0,255,255,0.3);
+            background-clip: text;
+            margin-bottom: 10px;
         }
 
         .subtitle {
-            color: #aaddff;
-            margin-top: 10px;
-            font-size: 1.1rem;
+            color: #aaa;
+            font-size: 1rem;
         }
 
-        .time-section {
+        .status-bar {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            background: rgba(0,50,100,0.3);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0,255,255,0.3);
-            backdrop-filter: blur(10px);
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .local-time, .global-time {
-            flex: 1;
-        }
-
-        .label {
-            font-size: 0.85rem;
-            color: #88ccff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .time {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #00ffff;
-            text-shadow: 0 0 15px rgba(0,255,255,0.5);
-        }
-
-        .greeting {
-            font-size: 1.1rem;
-            color: #ffcc00;
-            margin-top: 10px;
-        }
-
-        .time-row {
+        .live-indicator {
             display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+            gap: 8px;
         }
 
-        .now-playing, .ai-message, .weather-section, .actions, .request-box, .trivia-box, .player-box {
-            background: rgba(30,20,60,0.5);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(100,100,255,0.3);
-            backdrop-filter: blur(10px);
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
         }
 
-        .player-box {
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        .radio-player {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            background: linear-gradient(135deg, rgba(0,100,150,0.4), rgba(100,0,150,0.4));
-            border: 2px solid rgba(0,255,255,0.4);
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
         }
 
         .play-btn {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: linear-gradient(135deg, #00ffff, #ff00ff);
             border: none;
-            font-size: 30px;
-            color: #000;
+            font-size: 40px;
+            color: white;
             cursor: pointer;
-            margin: 15px 0;
-            transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(0,255,255,0.4);
+            margin: 20px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .play-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 50px rgba(0,255,255,0.6);
+            box-shadow: 0 0 30px #00ffff;
         }
 
-        .now-playing h2 {
+        .frequency {
+            font-size: 1.8rem;
+            color: #00ffff;
+            margin: 15px 0;
+        }
+
+        .now-playing {
             color: #ffcc00;
-            margin: 10px 0;
-            font-size: 1.4rem;
-        }
-
-        .ai-message p {
-            font-size: 1.1rem;
             font-style: italic;
-            color: #ddccff;
-            line-height: 1.6;
         }
 
-        .weather {
-            font-size: 1.3rem;
-            color: #88ffcc;
-        }
-
-        .actions {
-            display: flex;
-            gap: 20px;
-        }
-
-        .rating-box, .donate-box {
-            flex: 1;
-        }
-
-        .stars span {
-            font-size: 2.2rem;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-block;
-        }
-
-        .stars span:hover, .stars span.active {
-            color: #ffcc00;
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 8px #ffcc00);
-        }
-
-        button, input {
-            width: 100%;
-            padding: 14px;
+        .section {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(100, 100, 255, 0.4);
             border-radius: 12px;
-            border: none;
-            font-size: 1rem;
-            margin-top: 12px;
-        }
-
-        button {
-            background: linear-gradient(90deg, #00aaff, #ff00ff);
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(0,255,255,0.4);
-        }
-
-        input {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: 1px solid rgba(100,100,255,0.4);
-        }
-
-        @media (max-width: 600px) {
-            .time-section, .actions {
-                flex-direction: column;
-            }
-            .header h1 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* 📱 SOCIAL BUTTONS */
-        .social-hub {
-            background: rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 25px 0;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .social-hub h3 {
-            text-align: center;
-            color: #00f5ff;
+            padding: 20px;
             margin-bottom: 20px;
-            font-size: 18px;
         }
 
-        .social-buttons {
+        .section h2 {
+            color: #ff00ff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 14px 20px;
-            border-radius: 14px;
+            padding: 12px 25px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
         .social-btn:hover {
-            transform: scale(1.03);
+            transform: translateY(-3px);
         }
 
-        .btn-youtube {
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-            color: white;
-        }
+        .youtube { background: #ff0000; color: white; }
+        .facebook { background: #1877f2; color: white; }
+        .tiktok { background: #000; color: white; border: 1px solid #fff; }
 
-        .btn-youtube:hover {
-            box-shadow: 0 0 20px rgba(255,0,0,0.5);
-        }
-
-        .btn-facebook {
-            background: linear-gradient(90deg, #1877f2, #0d65d9);
-            color: white;
-        }
-
-        .btn-facebook:hover {
-            box-shadow: 0 0 20px rgba(24,119,242,0.5);
-        }
-
-        .btn-tiktok {
-            background: linear-gradient(90deg, #000000, #222222);
-            color: white;
-            border: 1px solid #ff0050;
-        }
-
-        .btn-tiktok:hover {
-            box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 15px #00f2ea, 0 0 15px #ff0050;
-        }
-
-        /* 📺 UNLI TV SECTION */
-        .unli-tv {
-            background: rgba(0,0,0,0.5);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 25px 0;
-            border: 2px solid;
-            border-image: linear-gradient(90deg, #00f5ff, #ff00ff, #00f5ff) 1;
-            box-shadow: 0 0 30px rgba(0,245,255,0.15);
-        }
-
-        .unli-tv h3 {
+        .weather-card {
+            background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), rgba(0, 100, 200, 0.05));
+            border: 3px solid #00c8ff;
+            border-radius: 15px;
+            padding: 25px 20px;
             text-align: center;
-            background: linear-gradient(90deg, #00f5ff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 20px;
-            margin-bottom: 15px;
+            margin: 15px 0;
         }
 
-        .tv-screen {
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            margin-bottom: 15px;
-            position: relative;
-            border: 3px solid #333;
-            min-height: 200px;
-        }
-
-        .tv-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #888;
-            text-align: center;
-        }
-
-        .tv-placeholder span {
-            font-size: 40px;
+        .weather-icon {
+            font-size: 3.5rem;
             margin-bottom: 10px;
         }
 
-        /* 🎰 LOTTO FLOATING BUTTON */
-        .lotto-fixed-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(90deg, #ff6b00, #ff0000);
-            border: none;
-            padding: 15px 25px;
-            font-size: 16px;
-            border-radius: 50px;
-            color: white;
-            cursor: pointer;
+        .weather-location {
+            font-size: 1.1rem;
+            color: #00c8ff;
+            margin-bottom: 5px;
+        }
+
+        .weather-temp {
+            font-size: 2.5rem;
             font-weight: bold;
-            z-index: 9998;
-            box-shadow: 0 0 20px rgba(255,107,0,0.5);
-            animation: lottoGlow 1.5s infinite alternate;
+            color: #fff;
+            margin-bottom: 5px;
         }
 
-        @keyframes lottoGlow {
-            from { box-shadow: 0 0 10px #ff6b00; }
-            to { box-shadow: 0 0 25px #ff0000; }
+        .weather-desc {
+            font-size: 1rem;
+            color: #ccc;
+            text-transform: capitalize;
+            margin-bottom: 15px;
         }
 
-        .lotto-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .lotto-modal-content {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 450px;
-            width: 95%;
-            border: 2px solid #ff6b00;
-            box-shadow: 0 0 40px rgba(255,107,0,0.4);
-            color: white;
-            animation: popIn 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        @keyframes popIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .lotto-close {
-            float: right;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-        }
-
-        .lotto-close:hover { color: white; }
-
-        /* 📑 TABS */
-        .lotto-tabs {
+        .weather-details {
             display: flex;
-            gap: 6px;
-            margin-bottom: 20px;
+            justify-content: space-around;
             flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
         }
 
-        .lotto-tab {
-            padding: 8px 14px;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
+        .weather-detail-item {
+            background: rgba(0, 200, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
         }
 
-        .lotto-tab.active {
-            background: linear-gradient(90deg, #ff6b00, #ff0000);
+        .trivia-card {
+            background: linear-gradient(135deg, rgba(255, 200, 0, 0.1), rgba(255, 150, 0, 0.05));
+            border: 3px solid #ffc800;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .trivia-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .trivia-title {
+            font-size: 1.1rem;
             font-weight: bold;
+            color: #ffc800;
+            margin-bottom: 15px;
         }
 
-        /* 🎯 DRAW CARD */
-        .draw-card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
+        .trivia-text {
+            font-size: 1rem;
+            color: #fff;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .lotto-frame-container {
+            border: 3px solid #ff6600;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+            background: #fff;
+        }
+
+        .lotto-frame-header {
+            background: linear-gradient(90deg, #ff6600, #ff3300);
             padding: 15px;
-            margin: 10px 0;
-            border-left: 3px solid #ff6b00;
-        }
-
-        .draw-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .draw-time-badge {
-            background: #ff6b00;
-            padding: 4px 10px;
-            border-radius: 20px;
+            text-align: center;
             font-weight: bold;
-            font-size: 14px;
+            color: white;
+            font-size: 1.1rem;
         }
 
-        .draw-duration {
-            font-size: 11px;
-            color: #888;
-            background: rgba(255,255,255,0.05);
-            padding: 2px 8px;
-            border-radius: 10px;
+        .lotto-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
         }
 
-        .draw-status {
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-
-        .status-waiting { background: #333; color: #aaa; }
-        .status-live { background: #00c853; color: white; animation: pulse 1s infinite; }
-        .status-done { background: #1565c0; color: white; }
-
-        @keyframes pulse {
-            0%,100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .draw-numbers {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 10px 0;
-            color: #00f5ff;
-            font-family: monospace;
-        }
-
-        .jackpot-prize {
-            font-size: 13px;
-            color: #ffd700;
-            font-weight: bold;
+        .lotto-note {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: center;
             line-height: 1.6;
         }
 
-        .voice-btn {
-            background: linear-gradient(90deg, #00c853, #00e676);
-            border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
-            color: white;
-            font-size: 12px;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: all 0.2s;
-        }
-
-        .voice-btn:hover { transform: scale(1.05); }
-        .voice-btn.speaking {
-            animation: speaking 0.5s infinite alternate;
-        }
-
-        @keyframes speaking {
-            from { background: #00c853; }
-            to { background: #00e676; box-shadow: 0 0 15px #00e676; }
-        }
-
-        .lotto-share {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0,245,255,0.1);
-            border-radius: 10px;
-            font-size: 12px;
-            color: #00f5ff;
-            word-break: break-all;
-        }
-
-        .lotto-close-btn {
-            background: linear-gradient(90deg, #00f5ff, #ff00ff);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
+        .lotto-direct-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            background: linear-gradient(90deg, #ff6600, #ff3300);
             color: white;
             font-weight: bold;
-            cursor: pointer;
+            text-decoration: none;
+            border-radius: 8px;
             margin-top: 15px;
-            width: 100%;
-            font-size: 16px;
+            transition: transform 0.2s;
         }
 
-        .auto-badge {
+        .lotto-direct-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(255, 102, 0, 0.1));
+            border: 2px solid #ffcc00;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .cta-btn {
             display: inline-block;
-            background: linear-gradient(90deg, #00c853, #00e676);
-            color: white;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-left: 6px;
+            padding: 14px 28px;
+            background: linear-gradient(90deg, #ffcc00, #ff9900);
+            color: #000;
             font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 8px;
+            transition: transform 0.2s;
         }
 
-        .loading-text {
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stat-item {
+            padding: 10px 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        .tv-placeholder {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px dashed #666;
+            border-radius: 10px;
+            padding: 40px 20px;
             text-align: center;
             color: #888;
-            font-size: 13px;
-            padding: 20px;
         }
 
-        .last-updated {
-            font-size: 10px;
-            color: #555;
-            text-align: right;
-            margin-top: 8px;
-        }
-
-        .api-note {
-            font-size: 10px;
-            color: #666;
+        footer {
             text-align: center;
-            margin-top: 5px;
-            font-style: italic;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
     <div class="stars" id="stars"></div>
+    
     <div class="container">
-        <header class="header">
-            <h1>🎙️ COSMICKHZ 📡</h1>
-            <p class="subtitle">Where the universe meets the airwaves — Broadcasting from the edge of the digital galaxy to every corner of Earth 🌌⚡🌍</p>
+        <header>
+            <h1>🌌 COSMICKHZ 📡</h1>
+            <p class="subtitle">Where the universe meets the airwaves — Jezreel Piñol's Official Broadcast Hub</p>
         </header>
 
-        <div class="player-box">
-            <span class="label">🔴 LIVE NOW — COSMICKHZ RADIO</span>
-            <h2 id="playerStatus">Tune in to the Galaxy...</h2>
-            <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
-            <p>24/7 Interstellar Broadcast 🚀🌌</p>
+        <div class="status-bar">
+            <div class="live-indicator">
+                <div class="live-dot"></div>
+                <span>🔴 LIVE — COSMICKHZ</span>
+            </div>
+            <div>
+                <span id="time">--:--:--</span>
+            </div>
         </div>
 
-        <div class="time-section">
-            <div class="local-time">
-                <span class="label">📍 YOUR TIME</span>
-                <div id="localTime" class="time">--:--:--</div>
-                <div id="greeting" class="greeting">Welcome, Traveler 🌌</div>
-            </div>
-            <div class="global-time">
-                <span class="label">🌍 GLOBAL FREQUENCIES</span>
-                <div class="time-row">
-                    <span>🇵🇭 PH</span><span id="mnlTime">--:--</span>
+        <div class="section">
+            <h2>📊 COSMIC STATS — REAL-TIME</h2>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number" id="visitorCount">0</div>
+                    <div>👥 Visitors</div>
                 </div>
-                <div class="time-row">
-                    <span>🇬🇧 UK</span><span id="ldnTime">--:--</span>
+                <div class="stat-item">
+                    <div class="stat-number" id="clickCount">0</div>
+                    <div>🖱️ Clicks</div>
                 </div>
-                <div class="time-row">
-                    <span>🇺🇸 US</span><span id="nycTime">--:--</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="now-playing">
-            <span class="label">🎵 CURRENT FREQUENCY</span>
-            <h2 id="songTitle">Scanning the Galaxy...</h2>
-            <p id="songArtist">Detecting interstellar signals 📡</p>
-        </div>
-
-        <div class="ai-message">
-            <span class="label">🌌 COSMIC VOICE</span>
-            <p id="aiSpeech">Greetings, citizen of the cosmos. You are tuned to Cosmickhz — where the digital and celestial meet. Stand by for transmission... 🎙️✨</p>
-        </div>
-
-        <div class="weather-section">
-            <span class="label">🌤️ PLANETARY CONDITIONS</span>
-            <div id="weatherInfo" class="weather">Scanning your location... 🛰️</div>
-        </div>
-
-        <div class="actions">
-            <div class="rating-box">
-                <span class="label">⭐ RATE THE BROADCAST</span>
-                <div class="stars" id="starsRating">
-                    <span onclick="rate(1)">★</span>
-                    <span onclick="rate(2)">★</span>
-                    <span onclick="rate(3)">★</span>
-                    <span onclick="rate(4)">★</span>
-                    <span onclick="rate(5)">★</span>
-                </div>
-                <p id="ratingCount">0 cosmic ratings 🌌</p>
-            </div>
-            <div class="donate-box">
-                <span class="label">🚀 SUPPORT THE MISSION</span>
-                <button onclick="alert('Thank you for supporting the cosmic broadcast! 🎙️💜🌌')">BECOME A PATRON 💫</button>
-            </div>
-        </div>
-
-        <div class="request-box">
-            <span class="label">🎤 REQUEST A FREQUENCY</span>
-            <input type="text" id="requestInput" placeholder="Song or signal name...">
-            <button onclick="submitRequest()">SEND TO THE STARS 📡✨</button>
-            <p id="requestStatus"></p>
-        </div>
-
-        <div class="trivia-box">
-            <span class="label">🧠 COSMIC TRIVIA</span>
-            <p id="triviaQuestion">Loading the universe...</p>
-            <input type="text" id="triviaAnswer" placeholder="Your cosmic answer...">
-            <button onclick="submitTrivia()">SUBMIT 🎯🌌</button>
-            <p id="triviaResult"></p>
-        </div>
-
-        <!-- 📱 SOCIAL LINKS HUB -->
-        <div class="social-hub">
-            <h3>🌐 CONNECT WITH COSMICKHZ</h3>
-            <div class="social-buttons">
-                <a href="https://www.youtube.com/@Cosmickhz" target="_blank" class="social-btn btn-youtube">
-                    ▶️ YouTube Channel
-                </a>
-                <a href="https://www.facebook.com/cosmickhz" target="_blank" class="social-btn btn-facebook">
-                    📘 Facebook Page
-                </a>
-                <a href="https://www.tiktok.com/@cosmickhz" target="_blank" class="social-btn btn-tiktok">
-                    🎵 TikTok Official
-                </a>
-            </div>
-        </div>
-
-        <!-- 📺 UNLI TV HUB -->
-        <div class="unli-tv">
-            <h3>📺 UNLI TV — WATCH ANYTIME</h3>
-            <div class="tv-screen">
-                <div class="tv-placeholder">
-                    <span>📺</span>
-                    <p>Your broadcast will appear here soon!<br>Coming to your screens... 🎬✨</p>
+                <div class="stat-item">
+                    <div class="stat-number" id="todayVisits">0</div>
+                    <div>📅 Today</div>
                 </div>
             </div>
-            <button onclick="alert('📺 TV Broadcast coming soon! Stay tuned to Cosmickhz! 🎙️🌌✨')">WATCH NOW 📡🎬</button>
         </div>
+
+        <div class="radio-player">
+            <p class="greeting">Welcome to the Galaxy! 🎙️✨</p>
+            <p>Your voice across the universe — Cosmickhz Radio</p>
+            
+            <button class="play-btn" id="playBtn">▶</button>
+            
+            <div class="frequency">📻 97.1 FM — LIVE STREAMING</div>
+            <p class="now-playing" id="nowPlaying">🎵 Click ▶ to play — BBC World Service Live! 🔊 NO HEADSET NEEDED! 📱✨</p>
+            
+            <audio id="radioAudio">
+                <source src="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service" type="audio/mpeg">
+                Your browser does not support audio.
+            
+        </div>
+
+        <div class="section">
+            <h2>🌤️ WEATHER FORECAST — CAGAYAN DE ORO</h2>
+            <div class="weather-card">
+                <div class="weather-icon" id="weatherIcon">🌤️</div>
+                <div class="weather-location">📍 Cagayan de Oro, Philippines</div>
+                <div class="weather-temp" id="weatherTemp">--°C</div>
+                <div class="weather-desc" id="weatherDesc">Loading weather...</div>
+                <div class="weather-details">
+                    <div class="weather-detail-item">💧 Humidity: <span id="weatherHumidity">--%</span></div>
+                    <div class="weather-detail-item">🌬️ Wind: <span id="weatherWind">-- km/h</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 DAILY TRIVIA — DID YOU KNOW?</h2>
+            <div class="trivia-card">
+                <div class="trivia-icon">🧠</div>
+                <div class="trivia-title">TODAY'S FUN FACT</div>
+                <div class="trivia-text" id="triviaText">Loading trivia...</div>
+                <div class="trivia-source">🔄 Changes automatically every day!</div>
+            </div>
+        </div>
+
+        <div class="cta-card">
+            <h3>🍯 EARN WHILE YOU SLEEP!</h3>
+            <p>Share your unused internet and get paid — passive income for everyone!</p>
+            <a href="https://join.honeygain.com/JEZRE243E5" target="_blank" class="cta-btn">🚀 JOIN HONEYGAIN — GET $3 WELCOME GIFT! ✨</a>
+        </div>
+
+        <div class="cta-card">
+            <h3>🌐 EVERYTHING COSMICKHZ IN ONE PLACE!</h3>
+            <p>YouTube • Facebook • TikTok • Shop • Free Tools — ALL HERE!</p>
+            <a href="https://tr.ee/VU3q3PZr9X" target="_blank" class="cta-btn">🔗 VISIT OUR HUB — FREE! ✨</a>
+        </div>
+
+        <div class="section">
+            <h2>🎰 OFFICIAL LOTTO RESULTS — LIVE & VIEWABLE</h2>
+            
+            <div class="lotto-frame-container">
+                <div class="lotto-frame-header">🎰 PCSO LOTTO RESULTS — POWERED BY LOTTOPCSO.COM</div>
+                <iframe 
+                    id="lottoIframe"
+                    src="https://www.lottopcso.com/" 
+                    class="lotto-frame"
+                    title="PCSO Lotto Results"
+                    loading="lazy"
+                    sandbox="allow-same-origin allow-scripts">
+                </iframe>
+            </div>
+
+            <div class="lotto-note">
+                ✅ <strong>100% LEGIT & REAL-TIME</strong> — Results sourced from official PCSO draws<br>
+                ✅ <strong>VIEWABLE RIGHT HERE</strong> — No need to open other tabs!<br>
+                ✅ <strong>AUTOMATIC UPDATES</strong> — Refreshes with every draw at 10:30AM, 2PM, 5PM & 9PM<br>
+                ✅ <strong>FREE FOREVER</strong> — No fees, no subscriptions, no maintenance needed!
+            </div>
+
+            <a href="https://www.lottopcso.com/" target="_blank" class="lotto-direct-btn">
+                🔴 OPEN IN FULL PAGE →
+            </a>
+        </div>
+
+        <div class="section">
+            <h2>📺 UNLI TV — YOUR BROADCAST HUB</h2>
+            <div class="tv-placeholder">
+                <h3>📺 Your broadcast will appear here soon!</h3>
+                <p>Coming soon — Live streams, shows, and more! ✨</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌐 CONNECT WITH US</h2>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@Cosmickhz" target="_blank" class="social-btn youtube">▶ YouTube</a>
+                <a href="https://tr.ee/VU3q3PZr9X" target="_blank" class="social-btn facebook">🔗 Our Hub</a>
+                <a href="#" class="social-btn tiktok">♪ TikTok</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Cosmickhz — Jezreel Piñol. All rights reserved.</p>
+            <p>🌌 Where the universe meets the airwaves 📡🎙️</p>
+            <p style="color:#00ffff; margin-top:10px;">🔊 ALL SOUNDS PLAY THROUGH YOUR PHONE SPEAKER — NO HEADSET REQUIRED! 📱✨</p>
+            <p style="color:#888; margin-top:10px; font-size:0.8rem;">Lotto results provided by LottoPCSO.com — For official confirmation, visit pcso.gov.ph</p>
+        </footer>
     </div>
 
-    <!-- 🎰 FLOATING LOTTO BUTTON -->
-    <button class="lotto-fixed-btn" onclick="openLottoModal()">🎰 PCSO LIVE</button>
+    <script>
+        let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
+        let clickCount = parseInt(localStorage.getItem('clickCount') || '0');
+        let todayVisits = parseInt(localStorage.getItem('todayVisits') || '0');
+        let lastVisitDate = localStorage.getItem('lastVisitDate');
+        
+        const today = new Date().toDateString();
+        if (lastVisitDate !== today) {
+            todayVisits = 0;
+            localStorage.setItem('lastVisitDate', today);
+        }
+        
+        visitorCount++;
+        todayVisits++;
+        localStorage.setItem('visitorCount', visitorCount);
+        localStorage.setItem('todayVisits', todayVisits);
+        
+        function updateStats() {
+            document.getElementById('visitorCount').textContent = visitorCount;
+            document.getElementById('clickCount').textContent = clickCount;
+            document.getElementById('todayVisits').textContent = todayVisits;
+        }
+        updateStats();
+        
+        document.addEventListener('click', function() {
+            clickCount++;
+            localStorage.setItem('clickCount', clickCount);
+            document.getElementById('clickCount').textContent = clickCount;
+        });
 
-    <!-
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('time').textContent = timeStr;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        const playBtn = document.getElementById('playBtn');
+        const radioAudio = document.getElementById('radioAudio');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', function() {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                radioAudio.play().catch(e => console.log('Audio play started'));
+                playBtn.textContent = '⏸';
+                document.getElementById('nowPlaying').textContent = '🎵 NOW PLAYING: BBC World Service — LIVE! 🔊 NO HEADSET NEEDED! 📱✨';
+            } else {
+                radioAudio.pause();
+                playBtn.textContent = '▶';
+                document.getElementById('nowPlaying').textContent = '🎵 Click ▶ to play — BBC World Service Live! 🔊 NO HEADSET NEEDED! 📱✨';
+            }
+        });
+
+        async function loadWeather() {
+            try {
+                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=8.47&longitude=124.64&current=temperature_2m,relative_humidity_2m,wind_speed_1m,weather_code&timezone=Asia%2FManila');
+                const data = await response.json();
+                
+                const temp = Math.round(data.current.temperature_2m);
+                const humidity = data.current.relative_humidity_2m;
+                const wind = Math.round(data.current.wind_speed_1m);
+                const code = data.current.weather_code;
+                
+                const weatherMap = {
+                    0: { icon: '☀️', desc: 'Clear Sky' },
+                    1: { icon: '🌤️', desc: 'Mainly Clear' },
+                    2: { icon: '⛅', desc: 'Partly Cloudy' },
+                    3: { icon: '☁️', desc: 'Overcast' },
+                    45: { icon: '🌫️', desc: 'Foggy' },
+                    48: { icon: '🌫️', desc: 'Rime Fog' },
+                    51: { icon: '🌧️', desc: 'Light Drizzle' },
+                    53: { icon: '🌧️', desc: 'Moderate Drizzle' },
+                    55: { icon: '🌧️', desc: 'Dense Drizzle' },
+                    61: { icon: '🌧️', desc: 'Slight Rain' },
+                    63: { icon: '🌧️', desc: 'Moderate Rain' },
+                    65: { icon: '🌧️', desc: 'Heavy Rain' },
+                    80: { icon: '🌦️', desc: 'Rain Showers' },
+                   
     
   
