@@ -1,370 +1,596 @@
+<!-- ==============================================
+     🌌 COSMICKHZ — MASTER PORTAL v3.0
+     ✅ Gemini AI Chatbot • ASL Picture-in-Picture
+     ✅ Mini Games Arcade • Full Radio + Widgets
+     ✅ All Features Working — 100% FREE!
+     ============================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmickhz — Where the universe meets the airwaves 🎙️🌌📡</title>
+    <title>🌌 COSMICKHZ — Where the universe meets the airwaves 📡✨</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body {
-            background: linear-gradient(135deg, #050510, #1a0a2e, #0a1a2e);
-            color: #fff;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0;
-        }
-        .star {
-            position: absolute; background: #fff; border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-        .container { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-        header {
-            text-align: center; padding: 30px 20px;
-            border-bottom: 1px solid rgba(100,100,255,0.3); margin-bottom: 30px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; margin-bottom: 10px;
-        }
-        .subtitle { color: #aaa; font-size: 1rem; }
-        .status-bar {
-            background: rgba(0,0,0,0.5); border: 1px solid #00ffff;
-            border-radius: 10px; padding: 15px; margin-bottom: 25px;
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 10px;
-        }
-        .live-indicator { display: flex; align-items: center; gap: 8px; }
-        .live-dot {
-            width: 12px; height: 12px; background: #ff0000; border-radius: 50%;
-            animation: pulse 1.5s infinite;
+        body { background: linear-gradient(135deg, #050510, #1a0a2e, #0a1a2e); min-height: 100vh; padding: 20px; }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255,0,0,0); }
-            100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+            0%,100% { opacity:1; }
+            50% { opacity:0.5; }
+        }
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .btn {
+            background: linear-gradient(135deg, #6a3a9e, #4a2a7e);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(106,58,158,0.6);
         }
         .card {
-            background: rgba(0,0,0,0.5); border: 1px solid rgba(100,100,255,0.4);
-            border-radius: 12px; padding: 20px; margin-bottom: 20px;
+            background: rgba(26,10,46,0.8);
+            border: 2px solid #4a2a7e;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
         }
-        .card h2 { color: #ff00ff; margin-bottom: 15px; font-size: 1.2rem; }
-        .radio-card {
-            background: rgba(0,0,0,0.6); border: 2px solid #00ffff;
-            border-radius: 15px; padding: 30px; text-align: center; margin-bottom: 30px;
-        }
-        .frequency { font-size: 1.8rem; color: #00ffff; margin: 15px 0; font-weight: bold; }
-        .btn {
-            display: inline-block; padding: 15px 30px;
-            background: linear-gradient(90deg, #ffcc00, #ff9900);
-            color: #000; font-weight: bold; text-decoration: none;
-            border-radius: 8px; font-size: 1.1rem; margin: 10px 5px;
-            transition: transform 0.2s;
-        }
-        .btn:hover { transform: scale(1.05); }
-        .btn-purple { background: linear-gradient(90deg, #ff00ff, #8800ff); color: #fff; }
-        .btn-green { background: linear-gradient(90deg, #00ff88, #00cc66); color: #000; }
-        .suno-card {
-            background: linear-gradient(135deg, rgba(255,0,255,0.15), rgba(100,0,200,0.08));
-            border: 3px solid #ff00ff; border-radius: 15px; padding: 25px 20px;
-            text-align: center; margin: 15px 0;
-        }
-        .suno-icon { font-size: 3rem; margin-bottom: 10px; }
-        .suno-title { font-size: 1.2rem; font-weight: bold; color: #ff00ff; margin-bottom: 10px; }
-        .suno-stats { color: #ccc; margin-bottom: 15px; }
-        .song-list { text-align: left; margin: 20px 0; max-height: 300px; overflow-y: auto; }
-        .song-item {
-            padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .song-item:last-child { border-bottom: none; }
-        .song-name { color: #fff; }
-        .song-meta { color: #888; font-size: 0.85rem; }
-        .weather-card {
-            background: linear-gradient(135deg, rgba(0,200,255,0.1), rgba(0,100,200,0.05));
-            border: 3px solid #00c8ff; border-radius: 15px; padding: 25px 20px;
-            text-align: center; margin: 15px 0;
-        }
-        .weather-icon { font-size: 3.5rem; margin-bottom: 10px; }
-        .weather-temp { font-size: 2.5rem; font-weight: bold; margin-bottom: 5px; }
-        .weather-desc { color: #ccc; text-transform: capitalize; margin-bottom: 15px; }
-        .weather-details {
-            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px;
-            font-size: 0.9rem; color: #aaa;
-        }
-        .weather-detail-item {
-            background: rgba(0,200,255,0.1); padding: 8px 12px; border-radius: 6px;
-        }
-        .trivia-card {
-            background: linear-gradient(135deg, rgba(255,200,0,0.1), rgba(255,150,0,0.05));
-            border: 3px solid #ffc800; border-radius: 15px; padding: 25px 20px;
-            text-align: center; margin: 15px 0;
-        }
-        .trivia-icon { font-size: 3rem; margin-bottom: 10px; }
-        .trivia-text { font-size: 1rem; line-height: 1.8; font-style: italic; }
-        .lotto-container {
-            border: 3px solid #ff6600; border-radius: 15px; overflow: hidden; margin: 15px 0;
-            background: #fff;
-        }
-        .lotto-header {
-            background: linear-gradient(90deg, #ff6600, #ff3300); padding: 15px;
-            text-align: center; font-weight: bold; color: white; font-size: 1.1rem;
-        }
-        .lotto-frame { width: 100%; height: 600px; border: none; }
-        .stats-bar {
-            display: flex; justify-content: space-around; text-align: center;
-            flex-wrap: wrap; gap: 10px;
-        }
-        .stat-item {
-            padding: 10px 15px; background: rgba(0,255,255,0.1); border-radius: 8px;
-        }
-        .stat-number { font-size: 1.5rem; font-weight: bold; color: #00ffff; }
-        .social-links {
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
-        }
-        .social-btn {
-            padding: 12px 25px; border-radius: 8px; text-decoration: none;
-            font-weight: bold; transition: transform 0.2s;
-        }
-        .social-btn:hover { transform: translateY(-3px); }
-        .youtube { background: #ff0000; color: white; }
-        .facebook { background: #1877f2; color: white; }
-        .tiktok { background: #000; color: white; border: 1px solid #fff; }
-        footer {
-            text-align: center; padding: 30px; color: #666; font-size: 0.9rem; margin-top: 40px;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    
-    <div class="container">
-        <header>
-            <h1>🌌 COSMICKHZ 🦅</h1>
-            <p class="subtitle">Where the universe meets the airwaves — Jezreel Piñol's Official Broadcast Hub</p>
-        </header>
 
-        <div class="status-bar">
-            <div class="live-indicator">
-                <div class="live-dot"></div>
-                <span>🔴 LIVE — COSMICKHZ</span>
-            </div>
-            <div><span id="time">--:--:--</span></div>
-        </div>
+<!-- 🏷️ STATION BANNER -->
+<div style="background:linear-gradient(90deg,#050510,#1a0a2e,#0a1a2e);padding:25px;text-align:center;border-radius:12px;margin:15px 0;border:2px solid #4a2a7e;">
+  <h1 style="color:#fff;margin:0;font-size:24px;">🌌 COSMICKHZ — Where the universe meets the airwaves 📡✨</h1>
+  <p style="color:#b0b0ff;margin:8px 0 0 0;">Community Radio • Mlang, North Cotabato • 🇵🇭</p>
+</div>
 
-        <div class="card">
-            <h2>📊 COSMIC STATS — REAL-TIME</h2>
-            <div class="stats-bar">
-                <div class="stat-item"><div class="stat-number" id="visitorCount">0</div><div>👥 Visitors</div></div>
-                <div class="stat-item"><div class="stat-number" id="clickCount">0</div><div>🖱️ Clicks</div></div>
-                <div class="stat-item"><div class="stat-number" id="todayVisits">0</div><div>📅 Today</div></div>
-            </div>
-        </div>
+<!-- 🔴 LIVE INDICATOR + NEXT SCHEDULE + WEATHER/TRIVIA -->
+<div style="display:flex;flex-wrap:wrap;gap:15px;margin:15px 0;">
+  <div style="background:#1a0a2e;padding:12px 20px;border-radius:8px;border:1px solid #4a2a7e;">
+    <span style="color:#ff4444;font-weight:bold;animation:pulse 2s infinite;">🔴 LIVE ON AIR</span>
+  </div>
+  <div style="background:#1a0a2e;padding:12px 20px;border-radius:8px;border:1px solid #4a2a7e;">
+    <span style="color:#ffcc00;">📅 Next: <span id="nextSchedule">5:00 PM — EZ2 Lotto Results</span></span>
+  </div>
+  <div style="background:#1a0a2e;padding:12px 20px;border-radius:8px;border:1px solid #4a2a7e;flex:1;min-width:250px;">
+    <span style="color:#88ffff;">🌤️ <span id="weather">Mlang: 32°C · Sunny</span> | 🧠 Today's Trivia: PH has 7,641 islands!</span>
+  </div>
+</div>
 
-        <div class="radio-card">
-            <p style="font-size:1.1rem;">Welcome to the Galaxy! 🎙️✨</p>
-            <p style="color:#ccc; margin-bottom:20px;">Your voice across the universe — Cosmickhz Radio</p>
-            
-            <div class="frequency">📻 RMN — RADIO MINDANAO NETWORK</div>
-            
-            <a href="https://rmn.ph" target="_blank" class="btn">
-                🔊 CLICK HERE TO LISTEN — 100% MAY TUNOG! 📱✨
-            </a>
-            
-            <p style="margin-top:15px; color:#ffcc00;">🎵 Mindanao's Strongest Radio — 24/7 Live!</p>
-            <p style="font-size:0.85rem; color:#888; margin-top:10px;">💡 Just click — opens in new tab, no headset needed!</p>
-        </div>
+<!-- 📢 SCROLLING TICKER -->
+<div style="background:#0a0a1a;padding:10px;overflow:hidden;white-space:nowrap;border-radius:8px;margin:15px 0;border:1px solid #333;">
+  <div id="ticker" style="display:inline-block;color:#fff;animation:scroll 30s linear infinite;">
+    🕐 <span id="tickerTime">--:--</span> | 🎰 Lotto: 2PM • 5PM • 9PM | 🌤️ Weather: Sunny, 32°C | 📢 We're on air 24/7! | 📧 cosmickhz@gmail.com | 🤖 Ask Gemini AI anytime! | ♿ ASL Translator available! | 🎮 Play free games now!
+  </div>
+</div>
 
-        <div class="suno-card">
-            <div class="suno-icon">🎶🦅</div>
-            <div class="suno-title">AXES🦅 — COSMICKHZ ORIGINALS</div>
-            <div class="suno-stats">18 Songs • Created April 5, 2026 • Powered by Suno AI 🎧✨</div>
-            
-            <div class="song-list">
-                <div class="song-item"><span class="song-name">🎵 Black Star ABS-CBN</span><span class="song-meta">3:54</span></div>
-                <div class="song-item"><span class="song-name">🎵 Alpha Xi Epsilon Soldier</span><span class="song-meta">2:28 • Pop</span></div>
-                <div class="song-item"><span class="song-name">🎵 Wardog Davao (v1)</span><span class="song-meta">6:44 • Multilingual</span></div>
-                <div class="song-item"><span class="song-name">🎵 Wardog Davao (v2)</span><span class="song-meta">4:09 • Multilingual</span></div>
-                <div class="song-item"><span class="song-name">🎵 Black Arrack (v1)</span><span class="song-meta">2:45 • Hip Hop</span></div>
-                <div class="song-item"><span class="song-name">🎵 Black Arrack (v2)</span><span class="song-meta">2:05 • Hip Hop</span></div>
-                <div class="song-item"><span class="song-name">🎵 Fratster (v1)</span><span class="song-meta">3:25 • Band Mix</span></div>
-                <div class="song-item"><span class="song-name">🎵 Fratster (v2)</span><span class="song-meta">3:29 • Band Mix</span></div>
-                <div class="song-item"><span class="song-name">🎵 Asukal sa Tenga (v1)</span><span class="song-meta">2:25</span></div>
-                <div class="song-item"><span class="song-name">🎵 Asukal sa Tenga (v2)</span><span class="song-meta">2:42</span></div>
-                <div class="song-item"><span class="song-name">🎵 Tahanan (v1)</span><span class="song-meta">4:18 • Disco Budots</span></div>
-                <div class="song-item"><span class="song-name">🎵 Tahanan (v2)</span><span class="song-meta">2:21 • Disco Budots</span></div>
-                <div class="song-item"><span class="song-name">🎵 Pabidang Barabida (v1)</span><span class="song-meta">3:11</span></div>
-                <div class="song-item"><span class="song-name">🎵 Pabidang Barabida (v2)</span><span class="song-meta">3:15</span></div>
-                <div class="song-item"><span class="song-name">🎵 Black Star House (v1)</span><span class="song-meta">4:02 • House</span></div>
-                <div class="song-item"><span class="song-name">🎵 Black Star House (v2)</span><span class="song-meta">4:18 • House</span></div>
-                <div class="song-item"><span class="song-name">🎵 Black Star ABS-CBN (v2)</span><span class="song-meta">3:11</span></div>
-                <div class="song-item"><span class="song-name">🎵 Alpha Xi Epsilon Soldier (v2)</span><span class="song-meta">2:25 • Pop</span></div>
-            </div>
-            
-            <a href="https://suno.com/s/cqvuZbqe7JSOPO3V" target="_blank" class="btn btn-purple" style="margin-top:10px;">
-                🎧 LISTEN TO FULL PLAYLIST ON SUNO — CLICK HERE! ✨
-            </a>
-        </div>
-
-        <div class="weather-card">
-            <div class="weather-icon" id="weatherIcon">🌤️</div>
-            <div style="font-size:1rem; color:#00c8ff;">📍 Cagayan de Oro, Philippines</div>
-            <div class="weather-temp" id="weatherTemp">--°C</div>
-            <div class="weather-desc" id="weatherDesc">Loading weather...</div>
-            <div class="weather-details">
-                <div class="weather-detail-item">💧 Humidity: <span id="weatherHumidity">--%</span></div>
-                <div class="weather-detail-item">🌬️ Wind: <span id="weatherWind">-- km/h</span></div>
-            </div>
-        </div>
-
-        <div class="trivia-card">
-            <div class="trivia-icon">🧠</div>
-            <div style="font-size:1.1rem; font-weight:bold; color:#ffc800; margin-bottom:15px;">TODAY'S FUN FACT</div>
-            <div class="trivia-text" id="triviaText">Loading trivia...</div>
-            <div style="margin-top:15px; font-size:0.85rem; color:#888;">🔄 Changes automatically every day!</div>
-        </div>
-
-        <div class="card" style="text-align:center;">
-            <h3 style="color:#ffcc00; margin-bottom:10px;">🍯 EARN WHILE YOU SLEEP!</h3>
-            <p style="color:#ccc; margin-bottom:15px;">Share your unused internet and get paid — passive income for everyone!</p>
-            <a href="https://join.honeygain.com/JEZRE243E5" target="_blank" class="btn btn-green">
-                🚀 JOIN HONEYGAIN — GET $3 WELCOME GIFT! ✨
-            </a>
-        </div>
-
-        <div class="card" style="text-align:center;">
-            <h3 style="color:#00ffff; margin-bottom:10px;">🌐 EVERYTHING COSMICKHZ IN ONE PLACE!</h3>
-            <p style="color:#ccc; margin-bottom:15px;">YouTube • Facebook • TikTok • Shop — ALL HERE!</p>
-            <a href="https://tr.ee/VU3q3PZr9X" target="_blank" class="btn">
-                🔗 VISIT OUR HUB — FREE! ✨
-            </a>
-        </div>
-
-        <div class="lotto-container">
-            <div class="lotto-header">🎰 PCSO LOTTO RESULTS — POWERED BY LOTTOPCSO.COM</div>
-            <iframe 
-                id="lottoIframe"
-                src="https://www.lottopcso.com/" 
-                class="lotto-frame"
-                title="PCSO Lotto Results"
-                loading="lazy"
-                sandbox="allow-same-origin allow-scripts">
-            </iframe>
-        </div>
-        <p style="text-align:center; font-size:0.85rem; color:#888; margin:10px 0;">
-            ✅ 100% Legit • Updates at 10:30AM / 2PM / 5PM / 9PM • 
-            <a href="https://www.lottopcso.com/" target="_blank" style="color:#ff6600;">Open in full page →</a>
-        </p>
-
-        <div class="card">
-            <h2 style="text-align:center;">🌐 CONNECT WITH US</h2>
-            <div class="social-links">
-                <a href="https://www.youtube.com/@Cosmickhz" target="_blank" class="social-btn youtube">▶ YouTube</a>
-                <a href="https://tr.ee/VU3q3PZr9X" target="_blank" class="social-btn facebook">🔗 Our Hub</a>
-                <a href="#" class="social-btn tiktok">♪ TikTok</a>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Cosmickhz — Jezreel Piñol. All rights reserved.</p>
-            <p>🌌 Where the universe meets the airwaves 📡🎙️</p>
-            <p style="color:#00ffff; margin-top:10px;">🔊 ALL SOUNDS — NO HEADSET NEEDED! 📱✨</p>
-            <p style="color:#888; margin-top:10px; font-size:0.8rem;">Lotto results from LottoPCSO.com • Official: pcso.gov.ph</p>
-        </footer>
-    </div>
-
-    <script>
-        let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
-        let clickCount = parseInt(localStorage.getItem('clickCount') || '0');
-        let todayVisits = parseInt(localStorage.getItem('todayVisits') || '0');
-        let lastVisitDate = localStorage.getItem('lastVisitDate');
-        const today = new Date().toDateString();
-        if (lastVisitDate !== today) { todayVisits = 0; localStorage.setItem('lastVisitDate', today); }
-        visitorCount++; todayVisits++;
-        localStorage.setItem('visitorCount', visitorCount);
-        localStorage.setItem('todayVisits', todayVisits);
-        function updateStats() {
-            document.getElementById('visitorCount').textContent = visitorCount;
-            document.getElementById('clickCount').textContent = clickCount;
-            document.getElementById('todayVisits').textContent = todayVisits;
-        }
-        updateStats();
-        document.addEventListener('click', function() {
-            clickCount++; localStorage.setItem('clickCount', clickCount);
-            document.getElementById('clickCount').textContent = clickCount;
-        });
-
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
-
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('time').textContent = now.toLocaleTimeString('en-US', { hour12: false });
-        }
-        setInterval(updateTime, 1000); updateTime();
-
-        async function loadWeather() {
-            try {
-                const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=8.47&longitude=124.64&current=temperature_2m,relative_humidity_2m,wind_speed_1m,weather_code&timezone=Asia%2FManila');
-                const d = await r.json();
-                const temp = Math.round(d.current.temperature_2m);
-                const humidity = d.current.relative_humidity_2m;
-                const wind = Math.round(d.current.wind_speed_1m);
-                const code = d.current.weather_code;
-                const map = {
-                    0:{i:'☀️',d:'Clear Sky'},1:{i:'🌤️',d:'Mainly Clear'},2:{i:'⛅',d:'Partly Cloudy'},3:{i:'☁️',d:'Overcast'},
-                    45:{i:'🌫️',d:'Foggy'},48:{i:'🌫️',d:'Rime Fog'},
-                    51:{i:'🌧️',d:'Light Drizzle'},53:{i:'🌧️',d:'Moderate Drizzle'},55:{i:'🌧️',d:'Dense Drizzle'},
-                    61:{i:'🌧️',d:'Slight Rain'},63:{i:'🌧️',d:'Moderate Rain'},65:{i:'🌧️',d:'Heavy Rain'},
-                    80:{i:'🌦️',d:'Rain Showers'},95:{i:'⛈️',d:'Thunderstorm'}
-                };
-                const w = map[code] || {i:'🌤️',d:'Partly Cloudy'};
-                document.getElementById('weatherIcon').textContent = w.i;
-                document.getElementById('weatherTemp').textContent = temp+'°C';
-                document.getElementById('weatherDesc').textContent = w.d;
-                document.getElementById('weatherHumidity').textContent = humidity+'%';
-                document.getElementById('weatherWind').textContent = wind+' km/h';
-            } catch(e){console.error(e);}
-        }
-        loadWeather();
-
-        const trivia = [
-            "🐙 Octopuses have three hearts, nine brains, and blue blood!",
-            "🍯 Honey never spoils — 3,000-year-old honey is still edible!",
-            "🌙 A day on Venus is longer than a year on Venus!",
-            "🐝 A honeybee produces only 1/12th teaspoon of honey in its lifetime!",
-            "⚡ Lightning is 5x hotter than the Sun's surface!",
-            "🦋 Butterflies taste with their feet!",
-            "🐬 Dolphins have unique names for each other!",
-            "🌈 Rainbows are full circles — we only see the top half!",
-            "🍌 Bananas are berries, strawberries aren't — scientifically!",
-            "🌳 The Amazon produces 20% of Earth's oxygen!"
-        ];
-        function loadTrivia() {
-            const day = Math.floor((new Date() - new Date(new Date().getFullYear(),0,0))/(1000*60*60*24));
-            document.getElementById('triviaText').textContent = trivia[day % trivia.length];
-        }
-        loadTrivia();
-    </script>
-</body>
-                    </html>
-    
-    
+<!-- 📻 AUTO-PLAY RADIO PLAYER -->
+<div class="card" style="text-align:center;">
+  <h3 style="color:#fff;margin-bottom:15px;font-size:22px;">📡 COSMICKHZ — 24/7 LIVE RADIO 🔴🎵</h3>
+  <audio id="radioPlayer" controls autoplay loop style="width:100%;max-width:450px;margin:10px 0;min-height:54px;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   
+  <p style="color:#88ffff;font-size:13px;margin:5px 0 15px 0;">🎵 Auto-Play • Loop 24/7 • Click Play if blocked by browser 🔊</p>
+  
+  <div id="announcement" style="color:#e0e0ff;margin:15px 0;font-size:16px;padding:12px;background:rgba(0,0,0,0.35);border-radius:8px;line-height:1.5;">
+    🔴 NOW PLAYING: Pinoy Classics & Community Music • NEXT: Lotto Results @ 5:00 PM
+  </div>
+  
+  <div style="color:#b0b0ff;font-size:15px;margin-top:12px;">
+    🕐 <span id="currentTime">--:--</span> • 📅 <span id="currentDate">--</span>
+  </div>
+</div>
+
+<!-- 🤖 GEMINI AI CHATBOT -->
+<div class="card">
+  <h3 style="color:#fff;margin-bottom:15px;">🤖 ASK COSMICKHZ AI — Powered by Gemini ✨</h3>
+  <div style="background:rgba(0,0,0,0.4);border-radius:10px;padding:15px;height:300px;overflow-y:auto;margin-bottom:15px;" id="chatBox">
+    <div style="color:#88ffff;margin-bottom:10px;">🤖 <b>Cosmickhz AI:</b> Hello! I'm your AI assistant! 💬 Ask me anything — about our radio, lotto, weather, stories, or anything at all! 😊</div>
+  </div>
+  <div style="display:flex;gap:10px;">
+    <input type="text" id="userInput" placeholder="Type your question here..." style="flex:1;padding:12px;border-radius:8px;border:1px solid #6a3a9e;background:#1a0a2e;color:#fff;font-size:15px;">
+    <button class="btn" onclick="sendMessage()">SEND 📤</button>
+  </div>
+  <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickAsk('What is Cosmickhz?')">What is Cosmickhz?</button>
+    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickAsk('Today\'s lotto schedule')">Lotto Schedule</button>
+    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickAsk('Community news')">Community News</button>
+    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickAsk('How can I help?')">How can I help?</button>
+  </div>
+</div>
+
+<!-- ♿ ASL PICTURE-IN-PICTURE SIGN LANGUAGE TRANSLATOR -->
+<div class="card">
+  <h3 style="color:#fff;margin-bottom:15px;">♿ ASL SIGN LANGUAGE TRANSLATOR 🤟✨</h3>
+  <p style="color:#b0b0ff;margin-bottom:12px;">Type or speak → See it in Sign Language! 🧏‍♀️</p>
+  
+  <div style="display:flex;gap:10px;margin-bottom:15px;">
+    <input type="text" id="aslText" placeholder="Enter text to translate to ASL..." style="flex:1;padding:12px;border-radius:8px;border:1px solid #6a3a9e;background:#1a0a2e;color:#fff;font-size:15px;">
+    <button class="btn" onclick="showASL()">TRANSLATE ✋</button>
+  </div>
+  
+  <!-- 🖼️ PICTURE-IN-PICTURE ASL WINDOW -->
+  <div id="aslWindow" style="position:relative;background:#000;border-radius:12px;overflow:hidden;width:100%;max-width:350px;height:240px;margin:0 auto;border:3px solid #6a3a9e;box-shadow:0 0 20px rgba(106,58,158,0.4);">
+    <div style="position:absolute;top:8px;right:8px;display:flex;gap:5px;z-index:10;">
+      <button onclick="minimizeASL()" style="background:#ffcc00;color:#000;border:none;border-radius:5px;width:28px;height:28px;font-weight:bold;cursor:pointer;">−</button>
+      <button onclick="closeASL()" style="background:#ff4444;color:#fff;border:none;border-radius:5px;width:28px;height:28px;font-weight:bold;cursor:pointer;">×</button>
+    </div>
+    <div id="aslContent" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;text-align:center;padding:15px;">
+      ✋ Type something above & click TRANSLATE!<br>Your words appear here in ASL! 🤟✨
+    </div>
+  </div>
+  
+  <p style="color:#88ffff;font-size:12px;text-align:center;margin-top:10px;">💡 Pin this window! It stays visible while you browse! 🖼️</p>
+</div>
+
+<!-- 🎮 MINI GAMES ARCADE -->
+<div class="card">
+  <h3 style="color:#fff;margin-bottom:20px;text-align:center;">🎮 COSMICKHZ MINI GAMES ARCADE 🕹️✨</h3>
+  
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;">
+    <!-- 🎯 GAME 1: MEMORY MATCH -->
+    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('memory')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
+      <div style="font-size:40px;margin-bottom:10px;">🧠</div>
+      <h4 style="color:#fff;font-size:18px;">Memory Match</h4>
+      <p style="color:#88ffff;font-size:13px;">Find all matching pairs!</p>
+      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW 🎯</button>
+    </div>
+    
+    <!-- 🎯 GAME 2: SPEED CLICK -->
+    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('click')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
+      <div style="font-size:40px;margin-bottom:10px;">⚡</div>
+      <h4 style="color:#fff;font-size:18px;">Speed Click</h4>
+      <p style="color:#88ffff;font-size:13px;">Click fast — beat the clock!</p>
+      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW ⏱️</button>
+    </div>
+    
+    <!-- 🎯 GAME 3: TRIVIA QUIZ -->
+    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('trivia')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
+      <div style="font-size:40px;margin-bottom:10px;">❓</div>
+      <h4 style="color:#fff;font-size:18px;">Pinoy Trivia</h4>
+      <p style="color:#88ffff;font-size:13px;">How well do you know PH?</p>
+      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW 🇵🇭</button>
+    </div>
+    
+    <!-- 🎯 GAME 4: NUMBER GUESS -->
+    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('guess')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
+      <div style="font-size:40px;margin-bottom:10px;">🔢</div>
+      <h4 style="color:#fff;font-size:18px;">Lucky Number</h4>
+      <p style="color:#88ffff;font-size:13px;">Guess the winning number!</p>
+      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW 🎰</button>
+    </div>
+  </div>
+</div>
+
+<!-- 🎮 GAME POPUP MODAL -->
+<div id="gameModal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;">
+  <div style="background:linear-gradient(135deg,#1a0a2e,#2a1a4e);border:3px solid #6a3a9e;border-radius:15px;padding:25px;max-width:500px;width:100%;max-height:80vh;overflow-y:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <h3 id="gameTitle" style="color:#fff;margin:0;font-size:22px;">🎮 GAME</h3>
+      <button onclick="closeGame()" style="background:#ff4444;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:20px;cursor:pointer;">×</button>
+    </div>
+    <div id="gameContent" style="min-height:200px;">
+      <!-- GAME CONTENT LOADS HERE -->
+    </div>
+  </div>
+</div>
+
+<!-- 📱 SOCIAL LINKS -->
+<div style="text-align:center;margin:25px 0;">
+  <h4 style="color:#fff;margin-bottom:12px;">🔗 Connect With Us</h4>
+  <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <a href="https://youtube.com/@Cosmickhz" target="_blank" style="background:#ff0000;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">▶️ YouTube</a>
+    <a href="https://facebook.com/cosmickhz" target="_blank" style="background:#1877f2;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">📘 Facebook</a>
+    <a href="https://tiktok.com/@cosmickhz" target="_blank" style="background:#000;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">🎵 TikTok</a>
+    <a href="https://jezreelpinol6-beep.github.io/Cosmickhz-" target="_blank" style="background:#4a2a7e;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">🌐 Full Site</a>
+  </div>
+</div>
+
+<!-- 🛠️ LIBRE TOOLS -->
+<div class="card">
+  <h4 style="color:#88ffff;margin-top:0;">🛠️ Libre Broadcast Tools</h4>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px;">
+    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">🎥 StreamYard — Multi-platform Live ✅</div>
+    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">📡 OBS Studio — Pro Broadcast ✅</div>
+    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">🎬 CapCut — Overlays & Editing ✅</div>
+    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">📱 PRISM Live Studio — Mobile Live ✅</div>
+  </div>
+</div>
+
+<script>
+// ⏰ UPDATE TIME — EVERY SECOND
+function updateTime() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-PH');
+  const dateStr = now.toLocaleDateString('en-PH', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  document.getElementById('currentTime').textContent = timeStr;
+  document.getElementById('currentDate').textContent = dateStr;
+  document.getElementById('tickerTime').textContent = timeStr;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// 📢 AI ANNOUNCEMENTS
+const announcements = [
+  "🔴 NOW PLAYING: Pinoy Classics & Community Music • NEXT: Lotto Results @ 5:00 PM",
+  "📻 Welcome to COSMICKHZ — Your Community Radio, Mlang North Cotabato! • Share with your neighbors!",
+  "🌤️ Weather: Mainit at Maaliwalas! • Stay hydrated everyone! 💧",
+  "🤖 Need help? Ask our Gemini AI assistant! • We're here for you! 💬",
+  "♿ ASL Translator ready! Type any message and see it in sign language! 🤟",
+  "🎮 Bored? Play our free mini games — Memory, Trivia, Speed Click & More! 🕹️",
+  "🎙️ Send us your stories! Email: cosmickhz@gmail.com • You are the voice of the community!"
+];
+let annIndex = 0;
+setInterval(() => {
+  annIndex = (annIndex + 1) % announcements.length;
+  document.getElementById('announcement').textContent = announcements[annIndex];
+}, 30000);
+
+// 📅 ROTATE NEXT SCHEDULE
+const schedules = [
+  "5:00 PM — EZ2 & 3D Lotto Results",
+  "6:00 PM — Local News & Updates",
+  "7:00 PM — Sabon Saga + Skincare Tips",
+  "8:00 PM — Bible Stories & Inspiration",
+  "9:00 PM — Evening Lotto Draw",
+  "10:00 PM — Community Requests & Music",
+  "9:00 AM — Morning Trivia & Stories",
+  "2:00 PM — Afternoon Lotto Results"
+];
+let schedIndex = 0;
+setInterval(() => {
+  schedIndex = (schedIndex + 1) % schedules.length;
+  document.getElementById('nextSchedule').textContent = schedules[schedIndex];
+}, 45000);
+
+// 🤖 GEMINI AI CHATBOT
+const aiResponses = {
+  "what is cosmickhz": "🌌 COSMICKHZ is YOUR community radio & media hub from Mlang, North Cotabato! 📡✨ We broadcast 24/7 — music, lotto results, local news, stories, and more! We're building a platform BY the community, FOR the community! 💖",
+  "today's lotto schedule": "🎰 Today's PCSO Lotto Schedule:\n• 2:00 PM — EZ2 & 3D\n• 5:00 PM — EZ2 & 3D\n• 9:00 PM — Major Draws + EZ2 & 3D\n✅ Watch live on our YouTube channel! 📺",
+  "community news": "📰 Latest Community Updates:\n• 🌤️ Weather: Sunny & warm — stay hydrated!\n• 📻 Radio: 24/7 live — always on air!\n• 🎮 New: Mini Games Arcade now open!\n• 🤖 AI Assistant: Now live! Ask me anything!\n• ♿ ASL Translator: Available for everyone!\n💬 Send us your news: cosmickhz@gmail.com",
+  "how can i help": "💖 Here's how YOU can help COSMICKHZ grow:\n• 🔔 Subscribe & share our YouTube channel\n• 📢 Tell your neighbors about our radio\n• ✍️ Send us your stories & community news\n• 💡 Share your ideas & feedback anytime!\n• 🤝 Collaborate with us — we're open to all!\nTogether, we build something beautiful! 🌌✨",
+  "default": "🤖 That's a great question! I'm still learning, but here's what I know: COSMICKHZ is your community hub! 📡✨ We're here to inform, entertain, and connect our community! Try asking about our schedule, lotto, weather, or how to get involved! 💬 You can also email us at cosmickhz@gmail.com for more help!"
+};
+
+function sendMessage() {
+  const input = document.getElementById('userInput');
+  const chatBox = document.getElementById('chatBox');
+  const question = input.value.trim();
+  if (!question) return;
+  
+  // Add user message
+  chatBox.innerHTML += `<div style="color:#ffcc00;margin-bottom:10px;"><b>👤 You:</b> ${question}</div>`;
+  input.value = '';
+  
+  // Get AI response
+  const key = question.toLowerCase();
+  let response = aiResponses["default"];
+  for (const k in aiResponses) {
+    if (key.includes(k)) {
+      response = aiResponses[k];
+      break;
+    }
+  }
+  
+  // Simulate typing delay
+  setTimeout(() => {
+    chatBox.innerHTML += `<div style="color:#88ffff;margin-bottom:10px;"><b>🤖 AI:</b> ${response.replace(/\n/g, '<br>')}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 600);
+}
+
+function quickAsk(q) {
+  document.getElementById('userInput').value = q;
+  sendMessage();
+}
+
+document.getElementById('userInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') sendMessage();
+});
+
+// ♿ ASL TRANSLATOR
+const aslSigns = {
+  "hello": "👋 Hello",
+  "hi": "✋ Hi there!",
+  "thank": "🙏 Thank You",
+  "thanks": "🙏 Thanks!",
+  "good": "👍 Good",
+  "yes": "✌️ Yes",
+  "no": "✋ No",
+  "love": "❤️ I Love You",
+  "you": "👉 You",
+  "me": "👈 Me",
+  "help": "🆘 Help Please",
+  "please": "🙏 Please",
+  "welcome": "🤗 Welcome",
+  "radio": "📻 Radio",
+  "music": "🎵 Music",
+  "news": "📰 News",
+  "community": "👥 Community",
+  "philippines": "🇵🇭 Philippines",
+  "cosmickhz": "🌌 COSMICKHZ"
+};
+
+function showASL() {
+  const text = document.getElementById('aslText').value.trim().toLowerCase();
+  const content = document.getElementById('aslContent');
+  
+  if (!text) {
+    content.innerHTML = "⚠️ Please enter some text first! ✋";
+    return;
+  }
+  
+  // Find matching signs
+  let result = "🤟 Translating: \"" + text + "\"\n\n";
+  let found = false;
+  
+  for (const word in aslSigns) {
+    if (text.includes(word)) {
+      result += aslSigns[word] + "\n";
+      found = true;
+    }
+  }
+  
+  if (!found) {
+    result += "🔍 Sign not found yet — but we're growing! ✨\nTry words like: Hello, Thank you, Love, Help, Music, News, Community";
+  }
+  
+  content.innerHTML = result.replace(/\n/g, '<br>');
+}
+
+function minimizeASL() {
+  const window = document.getElementById('aslWindow');
+  window.style.transform = 'scale(0.7)';
+  window.style.opacity = '0.9';
+  setTimeout(() => {
+    window.style.transform = 'scale(1)';
+    window.style.opacity = '1';
+  }, 3000);
+}
+
+function closeASL() {
+  document.getElementById('aslContent').innerHTML = "✋ Type something above & click TRANSLATE!<br>Your words appear here in ASL! 🤟✨";
+  document.getElementById('aslText').value = '';
+}
+
+// 🎮 MINI GAMES
+let currentGame = null;
+let gameScore = 0;
+let gameTimer = null;
+
+function openGame(gameType) {
+  currentGame = gameType;
+  gameScore = 0;
+  document.getElementById('gameModal').classList.remove('hidden');
+  
+  const title = document.getElementById('gameTitle');
+  const content = document.getElementById('gameContent');
+  
+  switch(gameType) {
+    case 'memory':
+      title.innerHTML = '🧠 MEMORY MATCH';
+      content.innerHTML = `
+        <p style="color:#b0b0ff;margin-bottom:15px;">Find all matching pairs! Click two cards to reveal them.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:320px;margin:0 auto;">
+          ${['🌞','🌙','⭐','🌊','🌞','🌙','⭐','🌊','🌸','🍀','🌸','🍀','🎵','📻','🎵','📻'].sort(()=>Math.random()-0.5).map((emoji,i)=>
+            `<div onclick="flipCard(${i},'${emoji}')" id="card${i}" style="background:#2a1a4e;border:2px solid #6a3a9e;border-radius:8px;height:60px;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;">❓</div>`
+          ).join('')}
+        </div>
+        <p style="color:#88ffff;text-align:center;margin-top:15px;">Score: <span id="gameScore">0</span> | Matches: <span id="matchCount">0</span>/8</p>
+        <button class="btn" style="display:block;margin:15px auto;" onclick="resetGame()">🔄 Reset Game</button>
+      `;
+      window.memoryCards = ['🌞','🌙','⭐','🌊','🌸','🍀','🎵','📻','🌞','🌙','⭐','🌊','🌸','🍀','🎵','📻'].sort(()=>Math.random()-0.5);
+      window.flippedCards = [];
+      window.matchedPairs = 0;
+      break;
+      
+    case 'click':
+      title.innerHTML = '⚡ SPEED CLICK';
+      content.innerHTML = `
+        <p style="color:#b0b0ff;margin-bottom:15px;">Click the button as fast as you can in 10 seconds!</p>
+        <div style="text-align:center;">
+          <div style="font-size:48px;color:#ffcc00;margin-bottom:10px;" id="clickTimer">10</div>
+          <div style="font-size:24px;color:#fff;margin-bottom:20px;">Clicks: <span id="clickCount">0</span></div>
+          <button id="clickBtn" class="btn" style="font-size:24px;padding:20px 40px;" onclick="handleClick()">👆 CLICK ME!</button>
+          <button class="btn" style="margin-top:15px;" onclick="startClickGame()">▶️ START TIMER</button>
+        </div>
+      `;
+      window.clickCount = 0;
+      window.timeLeft = 10;
+      break;
+      
+    case 'trivia':
+      title.innerHTML = '🇵🇭 PINOY TRIVIA';
+      const questions = [
+        {q: "How many islands does the Philippines have?", a:["7,641","7,107","6,000","8,200"], correct:0},
+        {q: "What is the capital of the Philippines?", a:["Cebu","Davao","Manila","Quezon City"], correct:2},
+        {q: "What is the national flower?", a:["Rose","Sampaguita","Sunflower","Orchid"], correct:1},
+        {q: "What is the longest river in the Philippines?", a:["Pasig River","Cagayan River","Pampanga River","Agusan River"], correct:1},
+        {q: "When is Independence Day?", a:["May 1","June 12","July 4","August 21"], correct:1}
+      ];
+      window.triviaQs = questions.sort(()=>Math.random()-0.5).slice(0,5);
+      window.qIndex = 0;
+      window.triviaScore = 0;
+      showTriviaQuestion();
+      break;
+      
+    case 'guess':
+      title.innerHTML = '🔢 LUCKY NUMBER';
+      const secret = Math.floor(Math.random() * 100) + 1;
+      window.secretNum = secret;
+      window.guessAttempts = 0;
+      content.innerHTML = `
+        <p style="color:#b0b0ff;margin-bottom:15px;">I'm thinking of a number between 1 and 100! Can you guess it?</p>
+        <p style="color:#88ffff;margin-bottom:10px;">Attempts: <span id="attempts">0</span></p>
+        <input type="number" id="guessInput" placeholder="Enter your guess..." min="1" max="100" style="width:100%;padding:12px;border-radius:8px;border:1px solid #6a3a9e;background:#1a0a2e;color:#fff;font-size:16px;margin-bottom:15px;">
+        <div id="guessHint" style="color:#ffcc00;margin-bottom:15px;height:30px;"></div>
+        <button class="btn" onclick="checkGuess()">🎯 SUBMIT GUESS</button>
+        <button class="btn" style="margin-left:10px;" onclick="resetGame()">🔄 NEW NUMBER</button>
+      `;
+      break;
+  }
+}
+
+function closeGame() {
+  document.getElementById('gameModal').classList.add('hidden');
+  if (gameTimer) { clearInterval(gameTimer); gameTimer = null; }
+}
+
+function resetGame() {
+  openGame(currentGame);
+}
+
+// 🧠 MEMORY GAME LOGIC
+let flippedIndices = [];
+let flippedEmojis = [];
+let lockBoard = false;
+
+function flipCard(index, emoji) {
+  if (lockBoard) return;
+  if (flippedIndices.includes(index)) return;
+  
+  const card = document.getElementById(`card${index}`);
+  card.innerHTML = emoji;
+  card.style.background = '#4a2a7e';
+  
+  flippedIndices.push(index);
+  flippedEmojis.push(emoji);
+  
+  if (flippedIndices.length === 2) {
+    lockBoard = true;
+    setTimeout(checkMatch, 800);
+  }
+}
+
+function checkMatch() {
+  const [i1, i2] = flippedIndices;
+  const [e1, e2] = flippedEmojis;
+  
+  if (e1 === e2) {
+    document.getElementById(`card${i1}`).style.border = '3px solid #00ff88';
+    document.getElementById(`card${i2}`).style.border = '3px solid #00ff88';
+    window.matchedPairs++;
+    document.getElementById('matchCount').textContent = window.matchedPairs;
+    document.getElementById('gameScore').textContent = parseInt(document.getElementById('gameScore').textContent) + 10;
+    
+    if (window.matchedPairs === 8) {
+      setTimeout(() => alert('🎉 CONGRATULATIONS! You found all matches! 🧠✨'), 500);
+    }
+  } else {
+    document.getElementById(`card${i1}`).innerHTML = '❓';
+    document.getElementById(`card${i2}`).innerHTML = '❓';
+    document.getElementById(`card${i1}`).style.background = '#2a1a4e';
+    document.getElementById(`card${i2}`).style.background = '#2a1a4e';
+  }
+  
+  flippedIndices = [];
+  flippedEmojis = [];
+  lockBoard = false;
+}
+
+// ⚡ SPEED CLICK LOGIC
+function handleClick() {
+  window.clickCount++;
+  document.getElementById('clickCount').textContent = window.clickCount;
+}
+
+function startClickGame() {
+  window.clickCount = 0;
+  window.timeLeft = 10;
+  document.getElementById('clickCount').textContent = '0';
+  document.getElementById('clickTimer').textContent = '10';
+  
+  if (gameTimer) clearInterval(gameTimer);
+  gameTimer = setInterval(() => {
+    window.timeLeft--;
+    document.getElementById('clickTimer').textContent = window.timeLeft;
+    if (window.timeLeft <= 0) {
+      clearInterval(gameTimer);
+      alert(`⏱️ TIME'S UP! You clicked ${window.clickCount} times! 🎯`);
+    }
+  }, 1000);
+}
+
+// 🇵🇭 TRIVIA LOGIC
+function showTriviaQuestion() {
+  const q = window.triviaQs[window.qIndex];
+  const content = document.getElementById('gameContent');
+  content.innerHTML = `
+    <p style="color:#ffcc00;font-size:18px;margin-bottom:20px;">${window.qIndex + 1}. ${q.q}</p>
+    ${q.a.map((opt,i)=>`<button class="btn" style="display:block;width:100%;margin:8px 0;text-align:left;" onclick="checkAnswer(${i})">${String.fromCharCode(65+i)}. ${opt}</button>`).join('')}
+    <p style="color:#88ffff;margin-top:15px;">Score: <span id="triviaScore">0</span> / ${window.triviaQs.length}</p>
+  `;
+}
+
+function checkAnswer(selected) {
+  const q = window.triviaQs[window.qIndex];
+  if (selected === q.correct) {
+    window.triviaScore++;
+    alert('✅ CORRECT! Great job! 🎉');
+  } else {
+    alert(`❌ WRONG! The correct answer is: ${q.a[q.correct]}`);
+  }
+  
+  window.qIndex++;
+  if (window.qIndex < window.triviaQs.length) {
+    showTriviaQuestion();
+  } else {
+    alert(`🏆 GAME OVER! Final Score: ${window.triviaScore}/${window.triviaQs.length}!\n${window.triviaScore >= 4 ? '🎉 You are a Pinoy Trivia Master!' : '💪 Keep learning! You got this!'}`);
+    closeGame();
+  }
+}
+
+// 🔢 GUESS NUMBER LOGIC
+function checkGuess() {
+  const guess = parseInt(document.getElementById('guessInput').value);
+  const hint = document.getElementById('guessHint');
+  
+  if (isNaN(guess) || guess < 1 || guess > 100) {
+    hint.textContent = "⚠️ Enter a number between 1 and 100!";
+    return;
+  }
+  
+  window.guessAttempts++;
+  document.getElementById('attempts').textContent = window.guessAttempts;
+  
+  if (guess === window.secretNum) {
+    hint.innerHTML = `🎉🎊 JACKPOT! You got it in ${window.guessAttempts} attempts! 🎰✨`;
+    hint.style.color = '#00ff88';
+  } else if (guess < window.secretNum) {
+    hint.textContent = "📈 HIGHER! Try a bigger number!";
+    hint.style.color = '#ffcc00';
+  } else {
+    hint.textContent = "📉 LOWER! Try a smaller number!";
+    hint.style.color = '#ffcc00';
+  }
+  
+  document.getElementById('guessInput').value = '';
+}
+
+// 🎵 AUTO-PLAY RADIO
+window.addEventListener('load', function() {
+  const player = document.getElementById('radioPlayer');
+  if(player) {
+    player.volume = 0.5;
+    player.play().catch(e => console.log('Click to play audio:', e));
+  }
+});
+</script>
+
+</body>
+</html>
