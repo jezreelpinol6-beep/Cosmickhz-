@@ -1,214 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌌 COSMICKHZ — Where the universe meets the airwaves 📡✨</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: linear-gradient(135deg, #050510, #1a0a2e, #0a1a2e); min-height: 100vh; padding: 20px; }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        @keyframes pulse {
-            0%,100% { opacity:1; }
-            50% { opacity:0.5; }
-        }
-        @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .btn {
-            background: linear-gradient(135deg, #6a3a9e, #4a2a7e);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(106,58,158,0.6);
-        }
-        .card {
-            background: rgba(26,10,46,0.8);
-            border: 2px solid #4a2a7e;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-        .hidden { display: none !important; }
-        .lotto-number {
-            display: inline-block;
-            background: #ffcc00;
-            color: #000;
-            font-weight: bold;
-            padding: 8px 14px;
-            border-radius: 8px;
-            margin: 4px;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-
-<!-- 🏷️ STATION BANNER -->
-<div style="background:linear-gradient(90deg,#050510,#1a0a2e,#0a1a2e);padding:25px;text-align:center;border-radius:12px;margin:15px 0;border:2px solid #4a2a7e;">
-  <h1 style="color:#fff;margin:0;font-size:24px;">🌌 COSMICKHZ — Where the universe meets the airwaves 📡✨</h1>
-  <p style="color:#b0b0ff;margin:8px 0 0 0;">Community Radio • Mlang, North Cotabato • 🇵🇭</p>
-</div>
-
-<!-- 🔴 LIVE INDICATOR + NEXT SCHEDULE + WEATHER/TRIVIA -->
-<div style="display:flex;flex-wrap:wrap;gap:15px;margin:15px 0;">
-  <div style="background:#1a0a2e;padding:12px 20px;border-radius:8px;border:1px solid #4a2a7e;">
-    <span style="color:#ff4444;font-weight:bold;animation:pulse 2s infinite;">🔴 LIVE ON AIR</span>
-  </div>
-  <div style="background:#1a0a2e;padding:12px 20px;border-radius:8px;border:1px solid #4a2a7e;">
-    <span style="color:#ffcc00;">📅 Next: <span id="nextSchedule">5:00 PM — EZ2 & 3D Lotto Results</span></span>
-  </div>
-  <div style="background:#1a0a2e;padding:12px 20px;border-radius:8px;border:1px solid #4a2a7e;flex:1;min-width:250px;">
-    <span style="color:#88ffff;">🌤️ Mlang: 32°C · Sunny | 🧠 Trivia: PH has 7,641 islands!</span>
-  </div>
-</div>
-
-<!-- 📢 SCROLLING TICKER -->
-<div style="background:#0a0a1a;padding:10px;overflow:hidden;white-space:nowrap;border-radius:8px;margin:15px 0;border:1px solid #333;">
-  <div id="ticker" style="display:inline-block;color:#fff;animation:scroll 30s linear infinite;">
-    🕐 <span id="tickerTime">--:--:--</span> | 🎰 Lotto: 2PM • 5PM • 9PM | 🌤️ Sunny, 32°C | 📧 cosmickhz@gmail.com | 🤖 AI Chat | ♿ ASL Translator | 🎮 Free Games!
-  </div>
-</div>
-
-<!-- 📻 RADIO PLAYER -->
-<div class="card" style="text-align:center;">
-  <h3 style="color:#fff;margin-bottom:15px;font-size:22px;">📻 COSMICKHZ — 24/7 LIVE RADIO 🔴🎵</h3>
-  <audio id="radioPlayer" controls autoplay loop style="width:100%;max-width:450px;margin:10px 0;min-height:54px;">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Your browser does not support audio.
-  
-  <p style="color:#88ffff;font-size:13px;margin:5px 0 15px 0;">🎵 Auto‑play 24/7 — Click Play if blocked by browser 🔊</p>
-  <div id="announcement" style="color:#e0e0ff;margin:15px 0;font-size:16px;padding:12px;background:rgba(0,0,0,0.35);border-radius:8px;line-height:1.5;">
-    🔴 NOW PLAYING: Pinoy Classics & Community Music • NEXT: Lotto Results @ 5PM
-  </div>
-  <div style="color:#b0b0ff;font-size:15px;margin-top:12px;">
-    🕐 <span id="currentTime">--:--:--</span> • 📅 <span id="currentDate">--</span>
-  </div>
-</div>
-
-<!-- 🎰 AUTOMATED EZ2 & 3D / SWERTRES LOTTO RESULT PANEL -->
-<div class="card">
-  <h3 style="color:#fff;text-align:center;font-size:22px;margin-bottom:15px;">🎰 EZ2 & 3D / SWERTRES — AUTOMATED LIVE LOTTO RESULT 🎰</h3>
-  <div id="lottoLoading" style="color:#ffcc00;text-align:center;font-size:18px;">🔄 Loading live PCSO results...</div>
-  <div id="lottoResultBox" style="display:none;text-align:center;"></div>
-  <p style="color:#b0b0ff;text-align:center;margin-top:10px;">2PM • 5PM • 9PM Draws | Source: LottoResulta</p>
-</div>
-
-<!-- 🤖 AI CHATBOT -->
-<div class="card">
-  <h3 style="color:#fff;margin-bottom:15px;">🤖 ASK COSMICKHZ AI ✨</h3>
-  <div style="background:rgba(0,0,0,0.4);border-radius:10px;padding:15px;height:300px;overflow-y:auto;margin-bottom:15px;" id="chatBox">
-    <div style="color:#88ffff;margin-bottom:10px;">🤖 <b>Cosmickhz AI:</b> Hello! Ask me about our radio, lotto, weather, or anything! 😊</div>
-  </div>
-  <div style="display:flex;gap:10px;">
-    <input type="text" id="userChatInput" placeholder="Type your question here..." style="flex:1;padding:12px;border-radius:8px;border:1px solid #6a3a9e;background:#1a0a2e;color:#fff;font-size:15px;">
-    <button class="btn" onclick="sendChat()">SEND 📤</button>
-  </div>
-  <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickChat('What is Cosmickhz?')">What is Cosmickhz?</button>
-    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickChat('Lotto schedule today')">Lotto Schedule</button>
-    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickChat('Community news')">Community News</button>
-    <button class="btn" style="font-size:12px;padding:6px 12px;" onclick="quickChat('How to help?')">How to Help?</button>
-  </div>
-</div>
-
-<!-- ♿ ASL TRANSLATOR -->
-<div class="card">
-  <h3 style="color:#fff;margin-bottom:15px;">♿ ASL SIGN LANGUAGE TRANSLATOR 🤟✨</h3>
-  <p style="color:#b0b0ff;margin-bottom:12px;">Type your message → See sign language!</p>
-  <div style="display:flex;gap:10px;margin-bottom:15px;">
-    <input type="text" id="aslInput" placeholder="Enter text to translate..." style="flex:1;padding:12px;border-radius:8px;border:1px solid #6a3a9e;background:#1a0a2e;color:#fff;font-size:15px;">
-    <button class="btn" onclick="showASL()">TRANSLATE ✋</button>
-  </div>
-  <div id="aslWindow" style="position:relative;background:#000;border-radius:12px;overflow:hidden;width:100%;max-width:350px;height:240px;margin:0 auto;border:3px solid #6a3a9e;box-shadow:0 0 20px rgba(106,58,158,0.4);">
-    <div style="position:absolute;top:8px;right:8px;display:flex;gap:5px;z-index:10;">
-      <button onclick="minimizeASL()" style="background:#ffcc00;color:#000;border:none;border-radius:5px;width:28px;height:28px;font-weight:bold;cursor:pointer;">−</button>
-      <button onclick="closeASL()" style="background:#ff4444;color:#fff;border:none;border-radius:5px;width:28px;height:28px;font-weight:bold;cursor:pointer;">×</button>
-    </div>
-    <div id="aslContent" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;text-align:center;padding:15px;">
-      ✋ Type message & click Translate! 🤟✨
-    </div>
-  </div>
-  <p style="color:#88ffff;font-size:12px;text-align:center;margin-top:10px;">💡 You can keep this window open while browsing!</p>
-</div>
-
-<!-- 🎮 MINI GAMES ARCADE -->
-<div class="card">
-  <h3 style="color:#fff;margin-bottom:20px;text-align:center;">🎮 COSMICKHZ MINI GAMES ARCADE 🕹️✨</h3>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;">
-    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('memory')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
-      <div style="font-size:40px;margin-bottom:10px;">🧠</div>
-      <h4 style="color:#fff;font-size:18px;">Memory Match</h4>
-      <p style="color:#88ffff;font-size:13px;">Find matching pairs!</p>
-      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW 🎯</button>
-    </div>
-    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('click')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
-      <div style="font-size:40px;margin-bottom:10px;">⚡</div>
-      <h4 style="color:#fff;font-size:18px;">Speed Click</h4>
-      <p style="color:#88ffff;font-size:13px;">Click fast, beat time!</p>
-      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW ⏱️</button>
-    </div>
-    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('trivia')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
-      <div style="font-size:40px;margin-bottom:10px;">❓</div>
-      <h4 style="color:#fff;font-size:18px;">Pinoy Trivia</h4>
-      <p style="color:#88ffff;font-size:13px;">How well do you know PH?</p>
-      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW 🇵🇭</button>
-    </div>
-    <div style="background:#1a1a33;padding:20px;border-radius:10px;text-align:center;border:2px solid #3a2a6e;cursor:pointer;transition:all 0.3s;" onclick="openGame('guess')" onmouseover="this.style.borderColor='#88ffff'" onmouseout="this.style.borderColor='#3a2a6e'">
-      <div style="font-size:40px;margin-bottom:10px;">🔢</div>
-      <h4 style="color:#fff;font-size:18px;">Guess Number</h4>
-      <p style="color:#88ffff;font-size:13px;">Pick the lucky number!</p>
-      <button class="btn" style="margin-top:10px;font-size:13px;padding:6px 15px;">PLAY NOW 🎰</button>
-    </div>
-  </div>
-</div>
-
-<!-- 🎮 GAME MODAL -->
-<div id="gameModal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;">
-  <div style="background:linear-gradient(135deg,#1a0a2e,#2a1a4e);border:3px solid #6a3a9e;border-radius:15px;padding:25px;max-width:500px;width:100%;max-height:80vh;overflow-y:auto;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-      <h3 id="gameTitle" style="color:#fff;margin:0;font-size:22px;">🎮 GAME</h3>
-      <button onclick="closeGame()" style="background:#ff4444;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:20px;cursor:pointer;">×</button>
-    </div>
-    <div id="gameContent" style="min-height:200px;"></div>
-  </div>
-</div>
-
-<!-- 📱 SOCIAL LINKS -->
-<div style="text-align:center;margin:25px 0;">
-  <h4 style="color:#fff;margin-bottom:12px;">🔗 Connect With Us</h4>
-  <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-    <a href="https://youtube.com/@Cosmickhz" target="_blank" style="background:#ff0000;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">▶️ YouTube</a>
-    <a href="https://facebook.com/cosmickhz" target="_blank" style="background:#1877f2;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">📘 Facebook</a>
-    <a href="https://tiktok.com/@cosmickhz" target="_blank" style="background:#000;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">🎵 TikTok</a>
-    <a href="https://jezreel65588-beep.github.io/Cosmickhz/" target="_blank" style="background:#4a2a7e;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold;">🌐 Full Site</a>
-  </div>
-</div>
-
-<!-- 🛠️ FREE TOOLS -->
-<div class="card">
-  <h4 style="color:#88ffff;margin-top:0;">🛠️ Free Broadcast Tools</h4>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px;">
-    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">🎥 StreamYard — Multi‑platform ✅</div>
-    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">📡 OBS Studio — Pro Broadcast ✅</div>
-    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">🎬 CapCut — Edit & Overlays ✅</div>
-    <div style="background:#1a1a33;padding:10px;border-radius:6px;color:#fff;">📱 PRISM Live — Mobile Stream ✅</div>
-  </div>
-</div>
-
-<script>
 // ⏰ UPDATE TIME
 function updateTime() {
   const now = new Date();
@@ -253,9 +42,101 @@ setInterval(() => {
   schedIndex = (schedIndex + 1) % schedules.length;
   document.getElementById('nextSchedule').textContent = schedules[schedIndex];
 }, 45000);
-
-// 🤖 UPGRADED COSMICKHZ AI CHATBOT — MAX MEMORY, LAGING SUMASAGOT!
+// 🤖 AI CHATBOT
 let chatMemory = [];
 const maxMemory = 12;
 
-const aiReplies
+const aiReplies = {
+  "what is cosmickhz": "🌌 COSMICKHZ ay isang community radio, web channel at lotto update platform!",
+  "lotto schedule today": "🎰 EZ2 at 3D/Swertres: 2PM, 5PM, at 9PM!",
+  "community news": "📰 Manatiling nakatutok para sa mga balita at update ng ating komunidad!",
+  "how to help": "🤝 I-share mo ang ating channel, mag-subscribe, at suportahan ang ating mga gawain!"
+};
+
+function sendChat() {
+  const input = document.getElementById('userChatInput');
+  const chatBox = document.getElementById('chatBox');
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  chatBox.innerHTML += `<div style="color:#fff;margin:5px 0;">👤 You: ${userText}</div>`;
+  const lower = userText.toLowerCase();
+  let reply = "🤖 Cosmickhz AI: Pasensya na, hindi ko pa alam ang sagot diyan. Itanong mo ulit ha!";
+  
+  for (const key in aiReplies) {
+    if (lower.includes(key)) {
+      reply = `🤖 Cosmickhz AI: ${aiReplies[key]}`;
+      break;
+    }
+  }
+  
+  chatBox.innerHTML += `<div style="color:#88ffff;margin:5px 0;">${reply}</div>`;
+  input.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function quickChat(text) {
+  document.getElementById('userChatInput').value = text;
+  sendChat();
+}
+
+// 🎮 GAMES
+function openGame(gameName) {
+  const modal = document.getElementById('gameModal');
+  const title = document.getElementById('gameTitle');
+  const content = document.getElementById('gameContent');
+  modal.classList.remove('hidden');
+
+  if (gameName === 'memory') {
+    title.textContent = "🧠 Memory Match";
+    content.innerHTML = `<p style="color:#fff;">Ito ang Memory Match! Hanapin ang magkaparehong larawan.</p>`;
+  } else if (gameName === 'click') {
+    title.textContent = "⚡ Speed Click";
+    content.innerHTML = `<p style="color:#fff;">Ito ang Speed Click! I-click nang mabilis ang pindutan.</p>`;
+  } else if (gameName === 'trivia') {
+    title.textContent = "❓ Pinoy Trivia";
+    content.innerHTML = `<p style="color:#fff;">Ito ang Pinoy Trivia! Sagutin ang mga tanong tungkol sa Pilipinas.</p>`;
+  } else if (gameName === 'guess') {
+    title.textContent = "🔢 Guess Number";
+    content.innerHTML = `<p style="color:#fff;">Ito ang Guess Number! Hulaan ang numero mula 1 hanggang 10.</p>`;
+  }
+}
+
+function closeGame() {
+  document.getElementById('gameModal').classList.add('hidden');
+}
+
+// ♿ ASL TRANSLATOR
+function showASL() {
+  const input = document.getElementById('aslInput');
+  const output = document.getElementById('aslContent');
+  const text = input.value.trim();
+  if (!text) {
+    output.textContent = "Ilagay mo muna ang mensahe!";
+    return;
+  }
+  output.textContent = `ASL para sa: ${text}`;
+}
+
+function minimizeASL() {
+  document.getElementById('aslContent').textContent = "ASL — pindutin ang TRANSLATE";
+}
+
+function closeASL() {
+  document.getElementById('aslContent').textContent = "✋ Type message & click Translate! 🤟✨";
+}
+
+// 🎰 LOTTO SIMULATION
+function loadLotto() {
+  const loading = document.getElementById('lottoLoading');
+  const resultBox = document.getElementById('lottoResultBox');
+  setTimeout(() => {
+    loading.style.display = "none";
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+      <p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 EZ2: ${Math.floor(Math.random()*37)} - ${Math.floor(Math.random()*37)}</p>
+      <p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 3D/Swertres: ${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}</p>
+    `;
+  }, 2000);
+}
+loadLotto();
