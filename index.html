@@ -1,142 +1,66 @@
-// ⏰ UPDATE TIME
-function updateTime() {
-  const now = new Date();
-  const timeStr = now.toLocaleTimeString('en-PH');
-  const dateStr = now.toLocaleDateString('en-PH', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-  document.getElementById('currentTime').textContent = timeStr;
-  document.getElementById('tickerTime').textContent = timeStr;
-  document.getElementById('currentDate').textContent = dateStr;
+// ⏰ ORAS
+function updateTime(){
+  const now=new Date();
+  document.getElementById('currentTime').textContent=now.toLocaleTimeString('en-PH');
+  document.getElementById('tickerTime').textContent=now.toLocaleTimeString('en-PH');
+  document.getElementById('currentDate').textContent=now.toLocaleDateString('en-PH',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 }
-setInterval(updateTime, 1000);
-updateTime();
+setInterval(updateTime,1000);updateTime();
 
-// 📢 ROTATING ANNOUNCEMENTS
-const announcements = [
-  "🔴 NOW PLAYING: Pinoy Classics & Community Music • NEXT: Lotto Results @ 5PM",
-  "📻 Welcome to COSMICKHZ! Share our radio to your neighbors!",
-  "🌤️ Stay hydrated! It's sunny today, 32°C 💧",
-  "🤖 Try our AI chat! Ask anything about our community!",
-  "♿ ASL Translator is ready! Type your message to see sign language!",
-  "🎮 Bored? Play our free mini games — Memory, Trivia, Speed Click & Guess Number!",
-  "🎙️ Send your stories! Email: cosmickhz@gmail.com — You are the voice of our community!"
-];
-let annIndex = 0;
-setInterval(() => {
-  annIndex = (annIndex + 1) % announcements.length;
-  document.getElementById('announcement').textContent = announcements[annIndex];
-}, 30000);
+// 📢 ANNOUNCEMENT
+const anns=["🔴 NOW PLAYING: Pinoy Classics • NEXT: Lotto @5PM","📻 Welcome to COSMICKHZ! Share it!","🤖 Try our AI chat!"];
+let ai=0;
+setInterval(()=>{ai=(ai+1)%anns.length;document.getElementById('announcement').textContent=anns[ai];},20000);
 
-// 📅 ROTATING SCHEDULE
-const schedules = [
-  "5:00 PM — EZ2 & 3D Lotto Results",
-  "6:00 PM — Community News & Updates",
-  "7:00 PM — Sabon Saga & Entertainment",
-  "8:00 PM — Inspirational & Bible Stories",
-  "9:00 PM — Evening Lotto Draw",
-  "10:00 PM — Community Requests & Music",
-  "9:00 AM — Morning Trivia & Stories",
-  "2:00 PM — Afternoon Lotto Draw"
-];
-let schedIndex = 0;
-setInterval(() => {
-  schedIndex = (schedIndex + 1) % schedules.length;
-  document.getElementById('nextSchedule').textContent = schedules[schedIndex];
-}, 45000);
-// 🤖 AI CHATBOT
-let chatMemory = [];
-const maxMemory = 12;
+// 📅 SCHEDULE
+const scheds=["5PM — EZ2 & 3D","6PM — Community News","7PM — Sabon Saga"];
+let si=0;
+setInterval(()=>{si=(si+1)%scheds.length;document.getElementById('nextSchedule').textContent=scheds[si];},30000);
 
-const aiReplies = {
-  "what is cosmickhz": "🌌 COSMICKHZ ay isang community radio, web channel at lotto update platform!",
-  "lotto schedule today": "🎰 EZ2 at 3D/Swertres: 2PM, 5PM, at 9PM!",
-  "community news": "📰 Manatiling nakatutok para sa mga balita at update ng ating komunidad!",
-  "how to help": "🤝 I-share mo ang ating channel, mag-subscribe, at suportahan ang ating mga gawain!"
-};
-
-function sendChat() {
-  const input = document.getElementById('userChatInput');
-  const chatBox = document.getElementById('chatBox');
-  const userText = input.value.trim();
-  if (!userText) return;
-
-  chatBox.innerHTML += `<div style="color:#fff;margin:5px 0;">👤 You: ${userText}</div>`;
-  const lower = userText.toLowerCase();
-  let reply = "🤖 Cosmickhz AI: Pasensya na, hindi ko pa alam ang sagot diyan. Itanong mo ulit ha!";
-  
-  for (const key in aiReplies) {
-    if (lower.includes(key)) {
-      reply = `🤖 Cosmickhz AI: ${aiReplies[key]}`;
-      break;
-    }
-  }
-  
-  chatBox.innerHTML += `<div style="color:#88ffff;margin:5px 0;">${reply}</div>`;
-  input.value = "";
-  chatBox.scrollTop = chatBox.scrollHeight;
+// 🤖 AI CHAT
+const replies={"what is cosmickhz":"🌌 COSMICKHZ ay community radio, web channel at lotto platform!","lotto schedule today":"🎰 EZ2 & 3D: 2PM,5PM,9PM!"};
+function sendChat(){
+  const i=document.getElementById('userChatInput');
+  const b=document.getElementById('chatBox');
+  const t=i.value.trim();if(!t)return;
+  b.innerHTML+=`<div style="color:#fff;margin:5px 0;">👤 You: ${t}</div>`;
+  const l=t.toLowerCase();
+  let r="🤖 Cosmickhz AI: Pasensya na, hindi ko pa alam.";
+  for(const k in replies){if(l.includes(k)){r=`🤖 Cosmickhz AI: ${replies[k]}`;break;}}
+  b.innerHTML+=`<div style="color:#88ffff;margin:5px 0;">${r}</div>`;
+  i.value="";b.scrollTop=b.scrollHeight;
 }
-
-function quickChat(text) {
-  document.getElementById('userChatInput').value = text;
-  sendChat();
-}
+function quickChat(t){document.getElementById('userChatInput').value=t;sendChat();}
 
 // 🎮 GAMES
-function openGame(gameName) {
-  const modal = document.getElementById('gameModal');
-  const title = document.getElementById('gameTitle');
-  const content = document.getElementById('gameContent');
-  modal.classList.remove('hidden');
-
-  if (gameName === 'memory') {
-    title.textContent = "🧠 Memory Match";
-    content.innerHTML = `<p style="color:#fff;">Ito ang Memory Match! Hanapin ang magkaparehong larawan.</p>`;
-  } else if (gameName === 'click') {
-    title.textContent = "⚡ Speed Click";
-    content.innerHTML = `<p style="color:#fff;">Ito ang Speed Click! I-click nang mabilis ang pindutan.</p>`;
-  } else if (gameName === 'trivia') {
-    title.textContent = "❓ Pinoy Trivia";
-    content.innerHTML = `<p style="color:#fff;">Ito ang Pinoy Trivia! Sagutin ang mga tanong tungkol sa Pilipinas.</p>`;
-  } else if (gameName === 'guess') {
-    title.textContent = "🔢 Guess Number";
-    content.innerHTML = `<p style="color:#fff;">Ito ang Guess Number! Hulaan ang numero mula 1 hanggang 10.</p>`;
-  }
+function openGame(n){
+  document.getElementById('gameModal').classList.remove('hidden');
+  const t=document.getElementById('gameTitle');
+  const c=document.getElementById('gameContent');
+  if(n==='memory'){t.textContent="🧠 Memory Match";c.innerHTML="<p style='color:#fff;'>Hanapin ang magkapareho!</p>";}
+  else if(n==='click'){t.textContent="⚡ Speed Click";c.innerHTML="<p style='color:#fff;'>I-click nang mabilis!</p>";}
+  else if(n==='trivia'){t.textContent="❓ Pinoy Trivia";c.innerHTML="<p style='color:#fff;'>Sagutin ang tanong!</p>";}
+  else if(n==='guess'){t.textContent="🔢 Guess Number";c.innerHTML="<p style='color:#fff;'>Hulaan ang numero!</p>";}
 }
+function closeGame(){document.getElementById('gameModal').classList.add('hidden');}
 
-function closeGame() {
-  document.getElementById('gameModal').classList.add('hidden');
+// ♿ ASL
+function showASL(){
+  const i=document.getElementById('aslInput');
+  const o=document.getElementById('aslContent');
+  const t=i.value.trim();
+  if(!t){o.textContent="Ilagay mo muna ang mensahe!";return;}
+  o.textContent=`ASL para sa: ${t}`;
 }
+function minimizeASL(){document.getElementById('aslContent').textContent="ASL — pindutin TRANSLATE";}
+function closeASL(){document.getElementById('aslContent').textContent="✋ Type message & click Translate! 🤟✨";}
 
-// ♿ ASL TRANSLATOR
-function showASL() {
-  const input = document.getElementById('aslInput');
-  const output = document.getElementById('aslContent');
-  const text = input.value.trim();
-  if (!text) {
-    output.textContent = "Ilagay mo muna ang mensahe!";
-    return;
-  }
-  output.textContent = `ASL para sa: ${text}`;
-}
-
-function minimizeASL() {
-  document.getElementById('aslContent').textContent = "ASL — pindutin ang TRANSLATE";
-}
-
-function closeASL() {
-  document.getElementById('aslContent').textContent = "✋ Type message & click Translate! 🤟✨";
-}
-
-// 🎰 LOTTO SIMULATION
-function loadLotto() {
-  const loading = document.getElementById('lottoLoading');
-  const resultBox = document.getElementById('lottoResultBox');
-  setTimeout(() => {
-    loading.style.display = "none";
-    resultBox.style.display = "block";
-    resultBox.innerHTML = `
-      <p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 EZ2: ${Math.floor(Math.random()*37)} - ${Math.floor(Math.random()*37)}</p>
-      <p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 3D/Swertres: ${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}</p>
-    `;
-  }, 2000);
+// 🎰 LOTTO
+function loadLotto(){
+  setTimeout(()=>{
+    document.getElementById('lottoLoading').style.display="none";
+    document.getElementById('lottoResultBox').style.display="block";
+    document.getElementById('lottoResultBox').innerHTML=`<p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 EZ2: ${Math.floor(Math.random()*37)} - ${Math.floor(Math.random()*37)}</p><p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 3D/Swertres: ${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}</p>`;
+  },2000);
 }
 loadLotto();
