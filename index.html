@@ -1,66 +1,94 @@
-// ⏰ ORAS
-function updateTime(){
-  const now=new Date();
-  document.getElementById('currentTime').textContent=now.toLocaleTimeString('en-PH');
-  document.getElementById('tickerTime').textContent=now.toLocaleTimeString('en-PH');
-  document.getElementById('currentDate').textContent=now.toLocaleDateString('en-PH',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EZ2 & 3D Swertres Lotto Result Today</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
+body{
+  background:linear-gradient(135deg,#0b0b20,#141435,#0b0b20);
+  min-height:100vh;
+  padding:30px 20px;
 }
-setInterval(updateTime,1000);updateTime();
-
-// 📢 ANNOUNCEMENT
-const anns=["🔴 NOW PLAYING: Pinoy Classics • NEXT: Lotto @5PM","📻 Welcome to COSMICKHZ! Share it!","🤖 Try our AI chat!"];
-let ai=0;
-setInterval(()=>{ai=(ai+1)%anns.length;document.getElementById('announcement').textContent=anns[ai];},20000);
-
-// 📅 SCHEDULE
-const scheds=["5PM — EZ2 & 3D","6PM — Community News","7PM — Sabon Saga"];
-let si=0;
-setInterval(()=>{si=(si+1)%scheds.length;document.getElementById('nextSchedule').textContent=scheds[si];},30000);
-
-// 🤖 AI CHAT
-const replies={"what is cosmickhz":"🌌 COSMICKHZ ay community radio, web channel at lotto platform!","lotto schedule today":"🎰 EZ2 & 3D: 2PM,5PM,9PM!"};
-function sendChat(){
-  const i=document.getElementById('userChatInput');
-  const b=document.getElementById('chatBox');
-  const t=i.value.trim();if(!t)return;
-  b.innerHTML+=`<div style="color:#fff;margin:5px 0;">👤 You: ${t}</div>`;
-  const l=t.toLowerCase();
-  let r="🤖 Cosmickhz AI: Pasensya na, hindi ko pa alam.";
-  for(const k in replies){if(l.includes(k)){r=`🤖 Cosmickhz AI: ${replies[k]}`;break;}}
-  b.innerHTML+=`<div style="color:#88ffff;margin:5px 0;">${r}</div>`;
-  i.value="";b.scrollTop=b.scrollHeight;
+.container{
+  max-width:500px;
+  margin:0 auto;
 }
-function quickChat(t){document.getElementById('userChatInput').value=t;sendChat();}
-
-// 🎮 GAMES
-function openGame(n){
-  document.getElementById('gameModal').classList.remove('hidden');
-  const t=document.getElementById('gameTitle');
-  const c=document.getElementById('gameContent');
-  if(n==='memory'){t.textContent="🧠 Memory Match";c.innerHTML="<p style='color:#fff;'>Hanapin ang magkapareho!</p>";}
-  else if(n==='click'){t.textContent="⚡ Speed Click";c.innerHTML="<p style='color:#fff;'>I-click nang mabilis!</p>";}
-  else if(n==='trivia'){t.textContent="❓ Pinoy Trivia";c.innerHTML="<p style='color:#fff;'>Sagutin ang tanong!</p>";}
-  else if(n==='guess'){t.textContent="🔢 Guess Number";c.innerHTML="<p style='color:#fff;'>Hulaan ang numero!</p>";}
+h1{
+  text-align:center;
+  color:#ffd700;
+  font-size:28px;
+  margin-bottom:30px;
+  text-shadow:0 0 10px #ffd70055;
 }
-function closeGame(){document.getElementById('gameModal').classList.add('hidden');}
-
-// ♿ ASL
-function showASL(){
-  const i=document.getElementById('aslInput');
-  const o=document.getElementById('aslContent');
-  const t=i.value.trim();
-  if(!t){o.textContent="Ilagay mo muna ang mensahe!";return;}
-  o.textContent=`ASL para sa: ${t}`;
+.card{
+  background:linear-gradient(145deg,#1a1a40,#12122b);
+  border:1px solid #ffd70044;
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px #00000066;
 }
-function minimizeASL(){document.getElementById('aslContent').textContent="ASL — pindutin TRANSLATE";}
-function closeASL(){document.getElementById('aslContent').textContent="✋ Type message & click Translate! 🤟✨";}
-
-// 🎰 LOTTO
-function loadLotto(){
-  setTimeout(()=>{
-    document.getElementById('lottoLoading').style.display="none";
-    document.getElementById('lottoResultBox').style.display="block";
-    document.getElementById('lottoResultBox').innerHTML=`<p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 EZ2: ${Math.floor(Math.random()*37)} - ${Math.floor(Math.random()*37)}</p><p style="color:#ffcc00;font-size:18px;margin:10px 0;">🎰 3D/Swertres: ${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}${Math.floor(Math.random()*10)}</p>`;
-  },2000);
+.card h2{
+  color:#87cefa;
+  font-size:20px;
+  margin-bottom:15px;
 }
-loadLotto();
+.numbers{
+  font-size:36px;
+  font-weight:800;
+  color:#ffd700;
+  letter-spacing:6px;
+  text-shadow:0 0 12px #ffd70066;
+  margin-bottom:10px;
+}
+.time{
+  color:#cccccc;
+  font-size:15px;
+}
+.loading{
+  text-align:center;
+  color:#fff;
+  font-size:20px;
+  padding:40px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎰 EZ2 & 3D Swertres Lotto Result Today</h1>
+<div id="loading" class="loading">Loading results...</div>
+<div id="resultContainer"></div>
+</div>
+
+<script>
+async function getLottoResults(){
+  try{
+    const res = await fetch("https://lottoresulta.com/api/v1/latest");
+    const data = await res.json();
+    const container = document.getElementById("resultContainer");
+    const loading = document.getElementById("loading");
+    loading.style.display = "none";
+
+    data.forEach(item=>{
+      if(item.game==="ez2" || item.game==="3d-lotto"){
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <h2>${item.game.toUpperCase()}</h2>
+          <div class="numbers">${item.result}</div>
+          <div class="time">Draw Time: ${item.draw_time}</div>
+        `;
+        container.appendChild(div);
+      }
+    })
+  }catch(err){
+    document.getElementById("loading").innerText = "Failed to load results.";
+    console.error(err);
+  }
+}
+getLottoResults();
+</script>
+</body>
+</html>
