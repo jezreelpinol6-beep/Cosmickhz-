@@ -3,94 +3,194 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EZ2 & 3D Swertres Lotto Result Today</title>
+<title>LUMIEL — Wisdom's Fallen Angel</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif}
 body{
-  background:linear-gradient(135deg,#0b0b20,#141435,#0b0b20);
-  min-height:100vh;
-  padding:30px 20px;
+  background:radial-gradient(circle at 50% 0%, #1a1a45 0%, #0a0a1f 60%, #050512 100%);
+  min-height:100vh;padding:18px 14px 90px;color:#e6e6fa;overflow-x:hidden;
 }
-.container{
-  max-width:500px;
-  margin:0 auto;
+.container{max-width:640px;margin:0 auto;position:relative;z-index:10;}
+.top-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:14px;gap:6px;}
+.pill-group{display:flex;gap:6px;flex-wrap:wrap;}
+.pill-btn{
+  background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.4);color:#ffd700;
+  padding:8px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
 }
-h1{
-  text-align:center;
-  color:#ffd700;
-  font-size:28px;
-  margin-bottom:30px;
-  text-shadow:0 0 10px #ffd70055;
+.pill-btn.active{background:#ffd700;color:#0a0a1f;}
+.header{text-align:center;margin-bottom:14px;}
+.angel-sigil{
+  width:62px;height:62px;margin:0 auto 6px;border-radius:50%;border:2px solid rgba(255,215,0,0.7);
+  display:flex;align-items:center;justify-content:center;font-size:28px;
 }
+.header h1{font-size:22px;letter-spacing:3px;color:#ffd700;}
+.header p{font-size:11px;color:#a9a9d4;letter-spacing:1px;margin-top:2px;}
 .card{
-  background:linear-gradient(145deg,#1a1a40,#12122b);
-  border:1px solid #ffd70044;
-  border-radius:20px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 8px 25px #00000066;
+  background:rgba(18, 18, 48, 0.9);border:1px solid rgba(255,215,0,0.28);
+  border-radius:16px;padding:14px;margin-bottom:14px;
 }
-.card h2{
-  color:#87cefa;
-  font-size:20px;
-  margin-bottom:15px;
+.card-header{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+  font-size:12px;font-weight:700;color:#ffd700;text-transform:uppercase;
 }
-.numbers{
-  font-size:36px;
-  font-weight:800;
-  color:#ffd700;
-  letter-spacing:6px;
-  text-shadow:0 0 12px #ffd70066;
-  margin-bottom:10px;
+.sub-label{font-size:11px;color:#87cefa;font-weight:700;margin:8px 0 6px;}
+.draw-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;margin-bottom:8px;}
+.draw-slot{
+  background:rgba(10,10,31,0.95);border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;padding:9px 6px;text-align:center;
 }
-.time{
-  color:#cccccc;
-  font-size:15px;
+.draw-slot.highlight-9pm{border-color:#ffd700;}
+.draw-time{font-size:10px;color:#a9a9d4;margin-bottom:4px;}
+.draw-number{font-size:16px;font-weight:800;color:#fff;}
+.draw-slot.highlight-9pm .draw-number{color:#ffd700;}
+.chat-box{height:250px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px;margin-bottom:10px;}
+.msg{max-width:86%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.45;}
+.msg.bot{align-self:flex-start;background:rgba(255,215,0,0.14);border:1px solid rgba(255,215,0,0.3);color:#f5f5ff;}
+.msg.user{align-self:flex-end;background:rgba(135,206,250,0.22);border:1px solid rgba(135,206,250,0.4);color:#fff;}
+.speak-mini{
+  display:inline-block;margin-top:6px;background:rgba(255,215,0,0.18);
+  border:1px solid rgba(255,215,0,0.45);color:#ffd700;font-size:11px;
+  padding:4px 9px;border-radius:10px;cursor:pointer;
 }
-.loading{
-  text-align:center;
-  color:#fff;
-  font-size:20px;
-  padding:40px;
+.quick-prompts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.chip{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,215,0,0.35);
+  color:#f0f0ff;padding:8px 12px;border-radius:16px;font-size:12px;cursor:pointer;
+}
+.input-row{display:flex;gap:8px;}
+.input-row input{
+  flex:1;background:#070718;border:1px solid rgba(255,215,0,0.45);
+  border-radius:12px;padding:12px 14px;color:#fff;font-size:14px;outline:none;
+}
+.ask-btn{
+  background:linear-gradient(135deg, #ffd700, #ffb700);color:#0a0a1f;
+  border:none;border-radius:12px;padding:0 18px;font-size:14px;font-weight:800;
+  cursor:pointer;min-width:74px;
 }
 </style>
 </head>
 <body>
+
 <div class="container">
-<h1>🎰 EZ2 & 3D Swertres Lotto Result Today</h1>
-<div id="loading" class="loading">Loading results...</div>
-<div id="resultContainer"></div>
+  <div class="top-bar">
+    <div class="pill-group">
+      <button type="button" class="pill-btn active" id="voiceBtn">🔊 Voice: ON</button>
+    </div>
+    <span id="phClock" style="font-size:11px;color:#00ffaa;">PH Time</span>
+  </div>
+
+  <div class="header">
+    <div class="angel-sigil">🪽</div>
+    <h1>LUMIEL</h1>
+    <p>3D SWERTRES • 2D EZ2 • TAGLISH ORACLE</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span>📡 PCSO Draw Board</span></div>
+    <div class="sub-label">🎯 3D LOTTO (SWERTRES)</div>
+    <div class="draw-grid">
+      <div class="draw-slot"><div class="draw-time">2:00 PM</div><div class="draw-number">9 - 4 - 2</div></div>
+      <div class="draw-slot"><div class="draw-time">5:00 PM</div><div class="draw-number">5 - 5 - 9</div></div>
+      <div class="draw-slot highlight-9pm"><div class="draw-time">🌙 9:00 PM</div><div class="draw-number">9 - 7 - 6</div></div>
+    </div>
+    <div class="sub-label">🎱 2D LOTTO (EZ2)</div>
+    <div class="draw-grid">
+      <div class="draw-slot"><div class="draw-time">2:00 PM</div><div class="draw-number">01 - 14</div></div>
+      <div class="draw-slot"><div class="draw-time">5:00 PM</div><div class="draw-number">14 - 19</div></div>
+      <div class="draw-slot highlight-9pm"><div class="draw-time">🌙 9:00 PM</div><div class="draw-number">26 - 22</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span>✨ Kausapin si Lumiel</span></div>
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="quick-prompts">
+      <button type="button" class="chip" onclick="askLumiel('Ano ang pattern sa 3D Swertres?')">🎯 3D Pattern</button>
+      <button type="button" class="chip" onclick="askLumiel('Ano ang angle sa 2D EZ2 9PM?')">🎱 EZ2 9PM</button>
+      <button type="button" class="chip" onclick="askLumiel('Bigyan mo ako ng payo ngayon.')">🍀 Payo</button>
+    </div>
+
+    <div class="input-row">
+      <input type="text" id="userInput" placeholder="Magtanong kay Lumiel..." />
+      <button type="button" class="ask-btn" id="askBtn" onclick="sendInput()">ASK ➤</button>
+    </div>
+  </div>
 </div>
 
 <script>
-async function getLottoResults(){
-  try{
-    const res = await fetch("https://lottoresulta.com/api/v1/latest");
-    const json = await res.json();
-    const data = json.draws;
-    const container = document.getElementById("resultContainer");
-    const loading = document.getElementById("loading");
-    loading.style.display = "none";
+var voiceOn = true;
 
-    data.forEach(item=>{
-      if(item.game==="2d-lotto" || item.game==="3d-lotto"){
-        const div = document.createElement("div");
-        div.className = "card";
-        const numStr = item.numbers.join(" - ");
-        div.innerHTML = `
-          <h2>${item.name}</h2>
-          <div class="numbers">${numStr}</div>
-          <div class="time">Date: ${item.date} | Session: ${item.session}</div>
-        `;
-        container.appendChild(div);
-      }
-    })
-  }catch(err){
-    document.getElementById("loading").innerText = "Failed to load results.";
-    console.error(err);
-  }
+function speakNow(text) {
+  try {
+    if (!voiceOn || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var clean = text.replace(/[*✨🌙📊🍀🧠🪽🔊🎯🎱]/g, '');
+    var u = new SpeechSynthesisUtterance(clean);
+    u.rate = 1.02;
+    window.speechSynthesis.speak(u);
+  } catch (e) {}
 }
-getLottoResults();
+
+function appendMsg(text, who) {
+  var box = document.getElementById('chatBox');
+  var div = document.createElement('div');
+  div.className = 'msg ' + who;
+  div.textContent = text;
+
+  if (who === 'bot') {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'speak-mini';
+    b.textContent = '🔊 Pakinggan';
+    b.onclick = function() { speakNow(text); };
+    div.appendChild(document.createElement('br'));
+    div.appendChild(b);
+    speakNow(text);
+  }
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function askLumiel(q) {
+  if (!q) return;
+  appendMsg(q, 'user');
+  var lower = q.toLowerCase();
+  var reply = "Nandito ako! Sa 3D (9-7-6) at EZ2 (26-22) cycle natin, malakas ang vibration ng 4-7-2 at 14-26. Ano pa ang gusto mong itanong?";
+  if (lower.indexOf('3d') !== -1) {
+    reply = "Sa 3D Swertres (9-4-2, 5-5-9, 9-7-6), laging lumalabas ang 9. Subukan mong bantayan ang mirror nito na 4 sa next draw!";
+  } else if (lower.indexOf('ez2') !== -1 || lower.indexOf('2d') !== -1) {
+    reply = "Sa 2D EZ2 (01-14, 14-19, 26-22), umulit ang 14 at lumabas ang 26-22 sa 9PM. Magandang bantayan ang 14-26 o 07-22!";
+  } else if (lower.indexOf('payo') !== -1) {
+    reply = "Tandaan: ang AI ay gabay lang sa patterns, kaya laging pairalin ang disiplina at malinaw na isip sa bawat desisyon.";
+  }
+  setTimeout(function() { appendMsg(reply, 'bot'); }, 200);
+}
+
+function sendInput() {
+  var inp = document.getElementById('userInput');
+  var val = inp.value.trim();
+  if (!val) return;
+  inp.value = '';
+  askLumiel(val);
+}
+
+document.getElementById('userInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') sendInput();
+});
+
+document.getElementById('voiceBtn').onclick = function() {
+  voiceOn = !voiceOn;
+  this.textContent = voiceOn ? '🔊 Voice: ON' : '🔇 Voice: OFF';
+  this.classList.toggle('active', voiceOn);
+  if (!voiceOn && window.speechSynthesis) window.speechSynthesis.cancel();
+};
+
+setInterval(function() {
+  document.getElementById('phClock').textContent = new Date().toLocaleTimeString('en-PH', { timeZone: 'Asia/Manila' });
+}, 1000);
+
+appendMsg("Kumusta! Gumagana na ang ASK button at Taglish voice. Magtanong ka lang sa ibaba!", "bot");
 </script>
 </body>
 </html>
