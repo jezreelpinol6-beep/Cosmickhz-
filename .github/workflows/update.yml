@@ -1,0 +1,38 @@
+name: Auto Update PCSO Results
+on:
+  schedule:
+    - cron: '15 6,9,13 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Results
+        run: |
+          python3 -c "
+          import json, urllib.request, re
+          from datetime import datetime, timezone, timedelta
+          ph = datetime.now(timezone(timedelta(hours=8))).strftime('%b %d, %Y %I:%M %p')
+          with open('results.json') as f: d = json.load(f)
+          d['updated'] = ph
+          try:
+            req = urllib.request.Request('https://lottopcso.com', headers={'User-Agent': 'Mozilla/5.0'})
+            html = urllib.request.urlopen(req, timeout=15).read().decode('utf-8', errors='ignore')
+            m3 = re.findall(r'\b(\d\s*-\s*\d\s*-\s*\d)\b', html)
+            m2 = re.findall(r'\b(\d{2}\s*-\s*\d{2})\b', html)
+            if len(m3) >= 3:
+              d['d3_2pm'], d['d3_5pm'], d['d3_9pm'] = m3[0], m3[1], m3[2]
+            if len(m2) >= 3:
+              d['ez2_2pm'], d['ez2_5pm'], d['ez2_9pm'] = m2[0], m2[1], m2[2]
+          except Exception:
+            pass
+          with open('results.json', 'w') as f: json.dump(d, f, indent=2)
+          "
+      - run: |
+          git config user.name "Lumiel Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add results.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update" && git push)
